@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة التحكم — رَفِيق</title>
+  <style>
+    :root {
+      --navy: #07172C;
+      --blue: #0B1F3A;
+      --ocean: #10284A;
+      --gold: #D4AF37;
+      --gold-warm: #E4C46A;
+      --gold-dim: rgba(212,175,55,0.12);
+      --text: #F0EDE8;
+      --text-muted: #8899AA;
+      --bg-card: rgba(11,31,58,0.6);
+      --border: rgba(212,175,55,0.12);
+      --radius: 16px;
+      --radius-sm: 10px;
+      --font: 'Segoe UI', system-ui, sans-serif;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: var(--font);
+      background: var(--navy);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    .admin-header {
+      background: var(--blue);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+    }
+    .admin-header h1 {
+      font-size: 1.2rem;
+      color: var(--gold);
+    }
+    .admin-header a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .admin-header a:hover { color: var(--gold); }
+    .admin-stats {
+      display: flex;
+      gap: 20px;
+      padding: 24px 32px;
+    }
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 28px;
+      flex: 1;
+    }
+    .stat-card .number {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+    .stat-card .label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+    .admin-controls {
+      padding: 0 32px 20px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      padding: 8px 20px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      font-size: 0.88rem;
+      transition: all 0.2s;
+    }
+    .filter-btn:hover { border-color: var(--gold); }
+    .filter-btn.active {
+      background: var(--gold-dim);
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+    .search-input {
+      padding: 10px 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      font-size: 0.9rem;
+      min-width: 220px;
+      outline: none;
+      font-family: inherit;
+    }
+    .search-input:focus { border-color: var(--gold); }
+    .reviews-table-wrap {
+      margin: 0 32px;
+      overflow-x: auto;
+      padding-bottom: 40px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    th, td {
+      padding: 14px 18px;
+      text-align: right;
+      font-size: 0.88rem;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    th {
+      background: rgba(212,175,55,0.06);
+      color: var(--gold);
+      font-weight: 600;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    td { color: var(--text); }
+    tr:hover td { background: rgba(212,175,55,0.03); }
+    .status-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+    .status-approved { background: rgba(34,197,94,0.12); color: #22c55e; }
+    .status-pending { background: rgba(234,179,8,0.12); color: #eab308; }
+    .stars-display {
+      display: flex;
+      gap: 2px;
+      color: var(--gold);
+    }
+    .stars-display .empty { color: rgba(255,255,255,0.1); }
+    .action-btn {
+      padding: 6px 14px;
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: all 0.2s;
+      margin: 0 2px;
+    }
+    .btn-approve { background: rgba(34,197,94,0.15); color: #22c55e; }
+    .btn-approve:hover { background: rgba(34,197,94,0.25); }
+    .btn-reject { background: rgba(239,68,68,0.15); color: #ef4444; }
+    .btn-reject:hover { background: rgba(239,68,68,0.25); }
+    .btn-delete { background: rgba(239,68,68,0.1); color: #f87171; }
+    .btn-delete:hover { background: rgba(239,68,68,0.2); }
+    .empty-state {
+      text-align: center;
+      padding: 60px 24px;
+      color: var(--text-muted);
+    }
+    .empty-state p { margin-top: 8px; }
+    .toast {
+      position: fixed;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(11,31,58,0.95);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 24px;
+      color: var(--text);
+      backdrop-filter: blur(20px);
+      opacity: 0;
+      transition: all 0.4s;
+      pointer-events: none;
+      z-index: 1000;
+      font-size: 0.9rem;
+    }
+    .toast.visible {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+    @media (max-width: 768px) {
+      .admin-header { padding: 16px 20px; }
+      .admin-stats { padding: 16px 20px; gap: 12px; flex-wrap: wrap; }
+      .stat-card { padding: 16px; }
+      .stat-card .number { font-size: 1.4rem; }
+      .admin-controls { padding: 0 20px 16px; }
+      .search-input { min-width: 140px; }
+      .reviews-table-wrap { margin: 0 12px; }
+      th, td { padding: 10px 12px; font-size: 0.82rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-header">
+    <h1>لوحة تحكم رَفِيق — التقييمات</h1>
+    <a href="/">← العودة للموقع</a>
+  </div>
+
+  <div class="admin-stats" id="admin-stats">
+    <div class="stat-card">
+      <div class="number" id="stat-total">0</div>
+      <div class="label">إجمالي التقييمات</div>
+    </div>
+    <div class="stat-card">
+      <div class="number" id="stat-approved">0</div>
+      <div class="label">مقبول</div>
+    </div>
+    <div class="stat-card">
+      <div class="number" id="stat-pending">0</div>
+      <div class="label">قيد المراجعة</div>
+    </div>
+  </div>
+
+  <div class="admin-controls">
+    <button class="filter-btn active" data-filter="all" onclick="setFilter('all')">الكل</button>
+    <button class="filter-btn" data-filter="pending" onclick="setFilter('pending')">قيد المراجعة</button>
+    <button class="filter-btn" data-filter="approved" onclick="setFilter('approved')">مقبول</button>
+    <input class="search-input" id="search-input" type="text" placeholder="بحث في التعليقات..." oninput="filterReviews()">
+  </div>
+
+  <div class="reviews-table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>الاسم</th>
+          <th>التقييم</th>
+          <th>التعليق</th>
+          <th>التاريخ</th>
+          <th>الحالة</th>
+          <th>إجراءات</th>
+        </tr>
+      </thead>
+      <tbody id="reviews-tbody">
+        <!-- JS -->
+      </tbody>
+    </table>
+    <div class="empty-state" id="empty-state" style="display:none">
+      <p>لا توجد تقييمات تطابق البحث</p>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    let REVIEWS = [];
+    let currentFilter = 'all';
+
+    async function loadReviews() {
+      try {
+        const res = await fetch('/api/reviews');
+        if (res.ok) REVIEWS = await res.json();
+      } catch (_) {}
+      if (!REVIEWS.length) {
+        try {
+          const local = JSON.parse(localStorage.getItem('rafiq_reviews') || '[]');
+          REVIEWS = local;
+        } catch (_) {}
+      }
+      renderAll();
+    }
+
+    function renderAll() {
+      updateStats();
+      filterReviews();
+    }
+
+    function updateStats() {
+      document.getElementById('stat-total').textContent = REVIEWS.length;
+      document.getElementById('stat-approved').textContent = REVIEWS.filter(r => r.approved).length;
+      document.getElementById('stat-pending').textContent = REVIEWS.filter(r => !r.approved).length;
+    }
+
+    function setFilter(filter) {
+      currentFilter = filter;
+      document.querySelectorAll('.filter-btn').forEach(b => {
+        b.classList.toggle('active', b.dataset.filter === filter);
+      });
+      filterReviews();
+    }
+
+    function filterReviews() {
+      const search = document.getElementById('search-input').value.toLowerCase();
+      let filtered = REVIEWS;
+
+      if (currentFilter === 'pending') filtered = filtered.filter(r => !r.approved);
+      else if (currentFilter === 'approved') filtered = filtered.filter(r => r.approved);
+
+      if (search) {
+        filtered = filtered.filter(r =>
+          (r.name && r.name.toLowerCase().includes(search)) ||
+          (r.text && r.text.toLowerCase().includes(search))
+        );
+      }
+
+      renderTable(filtered);
+    }
+
+    function renderTable(reviews) {
+      const tbody = document.getElementById('reviews-tbody');
+      const empty = document.getElementById('empty-state');
+
+      if (reviews.length === 0) {
+        tbody.innerHTML = '';
+        empty.style.display = '';
+        return;
+      }
+
+      empty.style.display = 'none';
+      tbody.innerHTML = reviews.map(r => {
+        const starsHtml = renderStars(r.rating || 5);
+        const statusClass = r.approved ? 'status-approved' : 'status-pending';
+        const statusText = r.approved ? 'مقبول' : 'قيد المراجعة';
+
+        return `<tr>
+          <td>${escapeHtml(r.name || 'مستخدم')}</td>
+          <td><div class="stars-display">${starsHtml}</div></td>
+          <td style="max-width:300px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${escapeHtml(r.text || '')}</td>
+          <td style="font-size:0.82rem;color:var(--text-muted)">${formatDate(r.date)}</td>
+          <td><span class="status-badge ${statusClass}">${statusText}</span></td>
+          <td>
+            ${!r.approved ? `<button class="action-btn btn-approve" onclick="approveReview('${r.id}')">قبول</button>` : ''}
+            ${r.approved ? `<button class="action-btn btn-reject" onclick="rejectReview('${r.id}')">رفض</button>` : ''}
+            <button class="action-btn btn-delete" onclick="deleteReview('${r.id}')">حذف</button>
+          </td>
+        </tr>`;
+      }).join('');
+    }
+
+    async function approveReview(id) {
+      try {
+        const res = await fetch('/api/reviews/' + id, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ approved: true })
+        });
+        if (res.ok) {
+          const review = REVIEWS.find(r => r.id === id);
+          if (review) review.approved = true;
+          renderAll();
+          showToast('تم قبول التقييم');
+        } else {
+          // Local fallback
+          const review = REVIEWS.find(r => r.id === id);
+          if (review) review.approved = true;
+          localStorage.setItem('rafiq_reviews', JSON.stringify(REVIEWS));
+          renderAll();
+          showToast('تم قبول التقييم (محلياً)');
+        }
+      } catch (_) {
+        const review = REVIEWS.find(r => r.id === id);
+        if (review) review.approved = true;
+        localStorage.setItem('rafiq_reviews', JSON.stringify(REVIEWS));
+        renderAll();
+        showToast('تم قبول التقييم (محلياً)');
+      }
+    }
+
+    async function rejectReview(id) {
+      try {
+        const res = await fetch('/api/reviews/' + id, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ approved: false })
+        });
+        if (res.ok) {
+          const review = REVIEWS.find(r => r.id === id);
+          if (review) review.approved = false;
+          renderAll();
+          showToast('تم رفض التقييم');
+        } else {
+          const review = REVIEWS.find(r => r.id === id);
+          if (review) review.approved = false;
+          localStorage.setItem('rafiq_reviews', JSON.stringify(REVIEWS));
+          renderAll();
+          showToast('تم رفض التقييم (محلياً)');
+        }
+      } catch (_) {
+        const review = REVIEWS.find(r => r.id === id);
+        if (review) review.approved = false;
+        localStorage.setItem('rafiq_reviews', JSON.stringify(REVIEWS));
+        renderAll();
+        showToast('تم رفض التقييم (محلياً)');
+      }
+    }
+
+    async function deleteReview(id) {
+      if (!confirm('هل أنت متأكد من حذف هذا التقييم؟')) return;
+      try {
+        const res = await fetch('/api/reviews/' + id, { method: 'DELETE' });
+        if (res.ok) {
+          REVIEWS = REVIEWS.filter(r => r.id !== id);
+          renderAll();
+          showToast('تم حذف التقييم');
+        } else {
+          REVIEWS = REVIEWS.filter(r => r.id !== id);
+          localStorage.setItem('rafiq_reviews', JSON.stringify(REVIEWS));
+          renderAll();
+          showToast('تم حذف التقييم (محلياً)');
+        }
+      } catch (_) {
+        REVIEWS = REVIEWS.filter(r => r.id !== id);
+        localStorage.setItem('rafiq_reviews', JSON.stringify(REVIEWS));
+        renderAll();
+        showToast('تم حذف التقييم (محلياً)');
+      }
+    }
+
+    function renderStars(rating) {
+      const full = Math.round(rating);
+      let html = '';
+      for (let i = 1; i <= 5; i++) {
+        const cls = i <= full ? '' : ' empty';
+        html += `<svg class="${cls}" width="14" height="14" viewBox="0 0 24 24" fill="${i <= full ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
+      }
+      return html;
+    }
+
+    function formatDate(dateStr) {
+      try {
+        const d = new Date(dateStr);
+        return d.toLocaleDateString('ar-SA', { year: 'numeric', month: 'short', day: 'numeric' });
+      } catch (_) { return dateStr; }
+    }
+
+    function escapeHtml(str) {
+      const d = document.createElement('div');
+      d.textContent = str;
+      return d.innerHTML;
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('visible');
+      setTimeout(() => t.classList.remove('visible'), 3000);
+    }
+
+    loadReviews();
+  </script>
+</body>
+</html>
