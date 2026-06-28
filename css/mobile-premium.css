@@ -1,0 +1,597 @@
+/* ============================================
+   PREMIUM MOBILE NAVBAR & FLOATING CARDS
+   Apple-Level UI/UX Redesign - Refactored
+   ============================================ */
+
+/* ============================================
+   MOBILE NAVBAR - 4 Column Layout
+   LEFT: Logo + Name | CENTER: Theme | RIGHT: Menu
+   ============================================ */
+@media (max-width: 992px) {
+  .nav {
+    width: 90vw;
+    max-width: none;
+    top: 12px;
+    height: 64px;
+    padding: 0;
+  }
+
+  .nav.scrolled {
+    height: 60px;
+    top: 8px;
+    transform: translateX(-50%) scale(0.98);
+  }
+
+  .nav-inner {
+    padding: 10px 20px;
+    height: 64px;
+    gap: 16px;
+  }
+
+  /* Hide desktop elements */
+  .nav-links,
+  .nav-actions {
+    display: none;
+  }
+
+  /* LEFT: Logo + Name */
+  .nav-brand {
+    flex-shrink: 0;
+    gap: 10px;
+  }
+
+  .nav-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+  }
+
+  .nav-icon img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .nav-name {
+    font-size: 1rem;
+  }
+
+  /* CENTER: Theme Toggle */
+  .theme-btn {
+    width: 60px;
+    height: 30px;
+    margin: 0 auto;
+  }
+
+  .theme-btn::before {
+    width: 24px;
+    height: 24px;
+    top: 2px;
+    left: 2px;
+  }
+
+  [data-theme="light"] .theme-btn::before {
+    left: calc(100% - 26px);
+  }
+
+  .icon-sun,
+  .icon-moon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .icon-sun {
+    left: 7px;
+  }
+
+  .icon-moon {
+    right: 7px;
+  }
+
+  /* RIGHT: Menu Button */
+  .nav-mobile-btn {
+    display: flex;
+    flex-shrink: 0;
+  }
+
+  /* Floating Cards Adjustments */
+  .hero-float-card {
+    padding: 20px 24px;
+    border-radius: 24px;
+    min-width: 140px;
+  }
+
+  .hero-float-prayer {
+    top: 18%;
+    right: -6%;
+  }
+
+  .hero-float-stat {
+    bottom: 22%;
+    left: -4%;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav {
+    width: calc(100% - 24px);
+    height: 62px;
+  }
+
+  .nav.scrolled {
+    height: 58px;
+  }
+
+  .nav-inner {
+    padding: 9px 16px;
+    height: 62px;
+    gap: 12px;
+  }
+
+  /* LEFT */
+  .nav-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .nav-icon img {
+    width: 18px;
+    height: 18px;
+  }
+
+  .nav-name {
+    font-size: 0.95rem;
+  }
+
+  /* CENTER */
+  .theme-btn {
+    width: 56px;
+    height: 28px;
+  }
+
+  .theme-btn::before {
+    width: 22px;
+    height: 22px;
+  }
+
+  [data-theme="light"] .theme-btn::before {
+    left: calc(100% - 24px);
+  }
+
+  .icon-sun,
+  .icon-moon {
+    width: 13px;
+    height: 13px;
+  }
+
+  .icon-sun {
+    left: 6px;
+  }
+
+  .icon-moon {
+    right: 6px;
+  }
+
+  /* RIGHT */
+  .nav-mobile-btn {
+    width: 44px;
+    height: 44px;
+  }
+
+  .nav-mobile-btn span {
+    width: 18px;
+    height: 2px;
+  }
+
+  .nav-mobile-btn.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .nav-mobile-btn.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Floating Cards */
+  .hero-float-card {
+    padding: 18px 22px;
+    border-radius: 22px;
+    min-width: 130px;
+    gap: 6px;
+  }
+
+  .float-card-dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .float-card-label {
+    font-size: 0.72rem;
+  }
+
+  .float-card-time {
+    font-size: 1.5rem;
+  }
+
+  .float-stat-num {
+    font-size: 1.7rem;
+  }
+
+  .float-stat-label {
+    font-size: 0.72rem;
+  }
+
+  .hero-float-prayer {
+    top: 20%;
+    right: -5%;
+  }
+
+  .hero-float-stat {
+    bottom: 24%;
+    left: -3%;
+  }
+}
+
+@media (max-width: 576px) {
+  .nav {
+    width: calc(100% - 20px);
+    height: 60px;
+  }
+
+  .nav.scrolled {
+    height: 56px;
+  }
+
+  .nav-inner {
+    padding: 8px 14px;
+    height: 60px;
+    gap: 10px;
+  }
+
+  /* LEFT */
+  .nav-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+  }
+
+  .nav-icon img {
+    width: 16px;
+    height: 16px;
+  }
+
+  .nav-name {
+    font-size: 0.9rem;
+  }
+
+  /* CENTER */
+  .theme-btn {
+    width: 52px;
+    height: 26px;
+  }
+
+  .theme-btn::before {
+    width: 20px;
+    height: 20px;
+  }
+
+  [data-theme="light"] .theme-btn::before {
+    left: calc(100% - 22px);
+  }
+
+  .icon-sun,
+  .icon-moon {
+    width: 12px;
+    height: 12px;
+  }
+
+  .icon-sun {
+    left: 5px;
+  }
+
+  .icon-moon {
+    right: 5px;
+  }
+
+  /* RIGHT */
+  .nav-mobile-btn {
+    width: 44px;
+    height: 44px;
+  }
+
+  .nav-mobile-btn span {
+    width: 16px;
+    height: 1.5px;
+  }
+
+  .nav-mobile-btn.active span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+
+  .nav-mobile-btn.active span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+
+  /* Floating Cards */
+  .hero-float-card {
+    padding: 16px 20px;
+    border-radius: 20px;
+    min-width: 120px;
+    gap: 5px;
+  }
+
+  .float-card-dot {
+    width: 7px;
+    height: 7px;
+  }
+
+  .float-card-label {
+    font-size: 0.68rem;
+  }
+
+  .float-card-time {
+    font-size: 1.3rem;
+  }
+
+  .float-stat-num {
+    font-size: 1.5rem;
+  }
+
+  .float-stat-label {
+    font-size: 0.68rem;
+  }
+
+  .hero-float-prayer {
+    top: 22%;
+    right: -4%;
+  }
+
+  .hero-float-stat {
+    bottom: 26%;
+    left: -2%;
+  }
+}
+
+@media (max-width: 430px) {
+  .nav {
+    width: calc(100% - 18px);
+    height: 58px;
+  }
+
+  .nav-inner {
+    padding: 8px 12px;
+    height: 58px;
+    gap: 8px;
+  }
+
+  .nav-icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .nav-icon img {
+    width: 15px;
+    height: 15px;
+  }
+
+  .nav-name {
+    font-size: 0.88rem;
+  }
+
+  .theme-btn {
+    width: 50px;
+    height: 25px;
+  }
+
+  .theme-btn::before {
+    width: 19px;
+    height: 19px;
+  }
+
+  [data-theme="light"] .theme-btn::before {
+    left: calc(100% - 21px);
+  }
+
+  .icon-sun,
+  .icon-moon {
+    width: 11px;
+    height: 11px;
+  }
+
+  .nav-mobile-btn {
+    width: 42px;
+    height: 42px;
+  }
+
+  .nav-mobile-btn span {
+    width: 15px;
+  }
+}
+
+@media (max-width: 390px) {
+  .nav {
+    height: 56px;
+  }
+
+  .nav-inner {
+    padding: 8px 12px;
+    height: 56px;
+  }
+
+  .nav-name {
+    font-size: 0.85rem;
+  }
+
+  .theme-btn {
+    width: 48px;
+    height: 24px;
+  }
+
+  .theme-btn::before {
+    width: 18px;
+    height: 18px;
+  }
+
+  [data-theme="light"] .theme-btn::before {
+    left: calc(100% - 20px);
+  }
+
+  .nav-mobile-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .hero-float-card {
+    padding: 14px 18px;
+    border-radius: 18px;
+    min-width: 110px;
+  }
+}
+
+@media (max-width: 360px) {
+  .nav {
+    width: calc(100% - 16px);
+    height: 54px;
+  }
+
+  .nav-inner {
+    padding: 7px 10px;
+    height: 54px;
+    gap: 6px;
+  }
+
+  .nav-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .nav-icon img {
+    width: 14px;
+    height: 14px;
+  }
+
+  .nav-name {
+    font-size: 0.82rem;
+  }
+
+  .theme-btn {
+    width: 46px;
+    height: 23px;
+  }
+
+  .theme-btn::before {
+    width: 17px;
+    height: 17px;
+  }
+
+  [data-theme="light"] .theme-btn::before {
+    left: calc(100% - 19px);
+  }
+
+  .icon-sun,
+  .icon-moon {
+    width: 10px;
+    height: 10px;
+  }
+
+  .nav-mobile-btn {
+    width: 38px;
+    height: 38px;
+  }
+
+  .nav-mobile-btn span {
+    width: 14px;
+    height: 1.5px;
+  }
+
+  .hero-float-card {
+    padding: 12px 16px;
+    border-radius: 16px;
+    min-width: 100px;
+  }
+
+  .float-card-dot {
+    width: 6px;
+    height: 6px;
+  }
+
+  .float-card-label {
+    font-size: 0.65rem;
+  }
+
+  .float-card-time {
+    font-size: 1.1rem;
+  }
+
+  .float-stat-num {
+    font-size: 1.3rem;
+  }
+
+  .float-stat-label {
+    font-size: 0.65rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .nav {
+    height: 52px;
+  }
+
+  .nav-inner {
+    padding: 6px 8px;
+    height: 52px;
+    gap: 4px;
+  }
+
+  .nav-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .nav-icon img {
+    width: 13px;
+    height: 13px;
+  }
+
+  .nav-name {
+    font-size: 0.78rem;
+  }
+
+  .theme-btn {
+    width: 44px;
+    height: 22px;
+  }
+
+  .theme-btn::before {
+    width: 16px;
+    height: 16px;
+  }
+
+  [data-theme="light"] .theme-btn::before {
+    left: calc(100% - 18px);
+  }
+
+  .nav-mobile-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .nav-mobile-btn span {
+    width: 12px;
+  }
+
+  .hero-float-card {
+    padding: 10px 14px;
+    min-width: 90px;
+  }
+}
+
+/* ============================================
+   SAFE AREA INSETS (iPhone Notch)
+   ============================================ */
+@supports (padding: max(0px)) {
+  @media (max-width: 992px) {
+    .nav-inner {
+      padding-left: max(16px, calc(env(safe-area-inset-left) + 16px));
+      padding-right: max(16px, calc(env(safe-area-inset-right) + 16px));
+    }
+  }
+}

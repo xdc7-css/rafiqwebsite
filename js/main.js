@@ -3,6 +3,8 @@
    Complete JavaScript (rewritten)
    ============================================ */
 
+import { db, collection, addDoc, getDocs, query, orderBy, serverTimestamp } from './firebase.js';
+
 let CONFIG = {};
 let REVIEWS_DATA = [];
 let REVIEWS_CURRENT_INDEX = 0;
@@ -64,7 +66,13 @@ function initTheme() {
   if (btn) {
     btn.addEventListener('click', () => {
       const current = document.documentElement.getAttribute('data-theme');
-      setTheme(current === 'dark' ? 'light' : 'dark');
+      const newTheme = current === 'dark' ? 'light' : 'dark';
+      setTheme(newTheme);
+      
+      // Add haptic feedback
+      if (navigator.vibrate) {
+        navigator.vibrate(10);
+      }
     });
   }
 }
@@ -689,44 +697,31 @@ function renderStats() {
    REVIEWS
    ============================================ */
 
-const REVIEWS_API = {
-  get baseURL() {
-    return window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-      ? 'http://localhost:8080/api/reviews'
-      : '/api/reviews';
-  },
-  async getAll() {
-    try {
-      const res = await fetch(this.baseURL);
-      if (!res.ok) throw new Error('Failed to fetch');
-      return await res.json();
-    } catch (_) {
-      return [];
-    }
-  },
-  async create(data) {
-    try {
-      const res = await fetch(this.baseURL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      });
-      if (!res.ok) throw new Error('Failed to submit');
-      return await res.json();
-    } catch (_) {
-      return null;
-    }
-  }
-};
-
 async function fetchReviews() {
-  const api = await REVIEWS_API.getAll();
-  if (api && api.length > 0) return api.filter(r => r.approved !== false);
-
-  const local = JSON.parse(localStorage.getItem('rafiq_reviews') || '[]');
-  if (local.length > 0) return local.filter(r => r.approved !== false);
-
-  return (CONFIG.reviews_sample || []).filter(r => r.approved !== false);
+  try {
+    const q = query(collection(db, "reviews"), orderBy("date", "desc"));
+    const querySnapshot = await getDocs(q);
+    
+    const reviews = [];
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
+      reviews.push({
+        name: data.name,
+        text: data.text,
+        rating: data.rating,
+        date: data.date ? data.date.toDate().toISOString() : new Date().toISOString(),
+        verified: data.verified || false,
+        version: data.version || '',
+        device: data.device || '',
+        country: data.country || ''
+      });
+    });
+    
+    return reviews;
+  } catch (error) {
+    console.error("Error fetching reviews:", error);
+    return [];
+  }
 }
 
 function buildReviewCard(review) {
@@ -943,25 +938,25 @@ async function submitReview(e) {
     submitBtn.textContent = 'جاري الإرسال...';
   }
 
-  const review = {
-    name: name || 'مستخدم رَفِيق',
-    text,
-    rating: REVIEW_RATING,
-    date: new Date().toISOString(),
-    approved: false
-  };
+  try {
+    await addDoc(collection(db, "reviews"), {
+      name: name || 'مستخدم رَفِيق',
+      text: text,
+      rating: REVIEW_RATING,
+      date: serverTimestamp(),
+      approved: true,
+      verified: false,
+      version: '1.0.0',
+      device: navigator.userAgent
+    });
 
-  const result = await REVIEWS_API.create(review);
-
-  if (result) {
     closeReviewModal();
     showToast('تم إرسال تقييمك بنجاح! شكراً لك', 'success');
-  } else {
-    const local = JSON.parse(localStorage.getItem('rafiq_reviews') || '[]');
-    local.push(review);
-    localStorage.setItem('rafiq_reviews', JSON.stringify(local));
+    await renderReviews();
+  } catch (error) {
+    console.error("Error adding review:", error);
     closeReviewModal();
-    showToast('تم حفظ تقييمك محلياً وسيظهر بعد المراجعة', 'info');
+    showToast('حدث خطأ أثناء إرسال التقييم، يرجى المحاولة مرة أخرى', 'error');
   }
 
   if (submitBtn) {
@@ -987,163 +982,6 @@ function renderDownloadMeta() {
     <span class="download-meta-item"><strong>الحجم</strong> ${fileSize}</span>
     <span class="download-meta-item"><strong>التاريخ</strong> ${releaseDate}</span>
   `;
-}
-
-/* ============================================
-   FAQ — Premium Accordion
-   ============================================ */
-
-function renderFAQ() {
-  const list = document.getElementById('faq-list');
-  if (!list) return;
-
-  const faqs = CONFIG.faq || [];
-  if (faqs.length === 0) return;
-
-  faqs.forEach((faq, i) => {
-    const id = 'faq-' + Date.now() + '-' + i;
-    const item = document.createElement('div');
-    item.className = 'faq-item' + (i === 0 ? ' active' : '');
-    item.id = id;
-    item.innerHTML = `
-      <button class="faq-question" onclick="toggleFAQ('${id}')" onmousedown="rippleFAQ(event)">
-        <span>${escapeHtml(faq.question)}</span>
-        <span class="faq-icon-wrap">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        </span>
-      </button>
-      <div class="faq-answer">
-        <div class="faq-answer-inner">${escapeHtml(faq.answer)}</div>
-      </div>
-    `;
-    list.appendChild(item);
-  });
-
-  if (faqs.length > 0) {
-    const first = list.querySelector('.faq-item');
-    if (first) {
-      const answer = first.querySelector('.faq-answer');
-      if (answer) answer.style.maxHeight = answer.scrollHeight + 'px';
-    }
-  }
-
-  renderFAQSupport();
-  generateFAQStars();
-}
-
-function toggleFAQ(id) {
-  const item = document.getElementById(id);
-  if (!item) return;
-
-  const isActive = item.classList.contains('active');
-
-  document.querySelectorAll('.faq-item').forEach(el => {
-    el.classList.remove('active');
-    const answer = el.querySelector('.faq-answer');
-    if (answer) answer.style.maxHeight = null;
-  });
-
-  if (!isActive) {
-    item.classList.add('active');
-    const answer = item.querySelector('.faq-answer');
-    if (answer) answer.style.maxHeight = answer.scrollHeight + 'px';
-  }
-}
-
-function rippleFAQ(e) {
-  const btn = e.currentTarget;
-  const rect = btn.getBoundingClientRect();
-  const x = ((e.clientX - rect.left) / rect.width * 100).toFixed(0);
-  const y = ((e.clientY - rect.top) / rect.height * 100).toFixed(0);
-  btn.style.setProperty('--ripple-x', x + '%');
-  btn.style.setProperty('--ripple-y', y + '%');
-}
-
-function renderFAQSupport() {
-  const container = document.getElementById('faq-support-cards');
-  if (!container) return;
-
-  const support = CONFIG.support || {};
-  const channels = support.channels || {};
-
-  const cards = [];
-
-  if (support.email) {
-    cards.push({
-      icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>',
-      label: 'البريد الإلكتروني',
-      sub: support.email,
-      href: 'mailto:' + support.email
-    });
-  }
-
-  if (channels.telegram) {
-    cards.push({
-      icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>',
-      label: 'تيليجرام',
-      sub: '@rafiq',
-      href: channels.telegram || '#',
-      badge: 'سريع'
-    });
-  }
-
-  if (channels.whatsapp) {
-    cards.push({
-      icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>',
-      label: 'واتساب',
-      sub: 'دردشة فورية',
-      href: channels.whatsapp || '#',
-      badge: 'مباشر'
-    });
-  }
-
-  if (channels.discord) {
-    cards.push({
-      icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189z"/></svg>',
-      label: 'ديسكورد',
-      sub: 'مجتمع رَفِيق',
-      href: channels.discord || '#',
-      badge: 'جديد'
-    });
-  }
-
-  // Live chat card
-  cards.push({
-    icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>',
-    label: 'دردشة مباشرة',
-    sub: support.response_time || 'أقل من ساعة',
-    href: '#',
-    badge: '24/7'
-  });
-
-  container.innerHTML = cards.map(c => `
-    <a href="${c.href}" class="faq-support-card" target="_blank" rel="noopener">
-      ${c.icon}
-      <span>${c.label}</span>
-      ${c.badge ? '<span class="faq-support-card-badge">' + c.badge + '</span>' : ''}
-    </a>
-  `).join('');
-}
-
-function generateFAQStars() {
-  const container = document.getElementById('faq-stars');
-  if (!container) return;
-  container.innerHTML = '';
-  for (let i = 0; i < 20; i++) {
-    const star = document.createElement('div');
-    star.className = 'star-particle';
-    star.style.cssText = `
-      position: absolute;
-      width: ${Math.random() * 2 + 1}px;
-      height: ${Math.random() * 2 + 1}px;
-      background: rgba(212,175,55,${Math.random() * 0.3 + 0.1});
-      border-radius: 50%;
-      top: ${Math.random() * 100}%;
-      left: ${Math.random() * 100}%;
-      animation: starFloat ${Math.random() * 3 + 2}s ease-in-out infinite ${Math.random() * 2}s;
-    `;
-    container.appendChild(star);
-  }
 }
 
 /* ============================================
@@ -1653,7 +1491,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   renderStats();
   renderReviews();
   renderDownloadMeta();
-  renderFAQ();
   renderContact();
   renderFooter();
   initReviewFormListeners();
