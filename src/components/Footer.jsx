@@ -2,6 +2,8 @@ import { FiHeart, FiArrowUp } from 'react-icons/fi';
 import { FaInstagram, FaLinkedinIn, FaGithub } from 'react-icons/fa';
 import { footerLinks } from '../data';
 
+const ANDROID_APK_URL = 'https://github.com/xdc7-css/rafiqwebsite/releases/download/Rafiq.App/rafiq.apk';
+
 export default function Footer() {
   const socials = [
     { icon: FaInstagram, href: 'https://www.instagram.com/203.9.7', label: 'Instagram' },
@@ -63,6 +65,10 @@ export default function Footer() {
                     href={link.href}
                     onClick={(e) => {
                       e.preventDefault();
+                      if (link.href === '#download') {
+                        window.open(ANDROID_APK_URL, '_blank', 'noopener,noreferrer');
+                        return;
+                      }
                       const el = document.getElementById(link.href.slice(1));
                       if (el) el.scrollIntoView({ behavior: 'smooth' });
                     }}

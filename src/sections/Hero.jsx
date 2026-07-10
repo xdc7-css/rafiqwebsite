@@ -10,6 +10,8 @@ const fadeUp = (delay = 0) => ({
   transition: { duration: 0.45, delay, ease: [0.25, 0.1, 0.25, 1] },
 });
 
+const ANDROID_APK_URL = 'https://github.com/xdc7-css/rafiqwebsite/releases/download/Rafiq.App/rafiq.apk';
+
 export default function Hero() {
   return (
     <section id="hero" className="relative overflow-hidden bg-bg-primary">
@@ -47,7 +49,9 @@ export default function Hero() {
               <span className="soon-badge">SOON</span>
             </a>
             <a
-              href="#"
+              href={ANDROID_APK_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex-1 inline-flex items-center justify-center gap-2 bg-white/[0.06] text-white/85 px-5 py-3 rounded-full text-sm font-semibold border border-white/[0.08] font-arabic"
             >
               <FaGooglePlay size={15} />
@@ -105,7 +109,9 @@ export default function Hero() {
               <span className="soon-badge">SOON</span>
             </a>
             <a
-              href="#"
+              href={ANDROID_APK_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2.5 bg-white/[0.06] text-white/75 px-8 py-3.5 rounded-full text-sm font-semibold border border-white/[0.08] font-arabic"
             >
               <FaGooglePlay size={17} />
