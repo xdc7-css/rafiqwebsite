@@ -30,7 +30,7 @@ function AnimatedRoutes() {
 
 export default function App() {
   return (
-    <Router>
+    <Router basename={import.meta.env.BASE_URL}>
       <ScrollProgress />
       <NoiseOverlay />
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden" aria-hidden="true">

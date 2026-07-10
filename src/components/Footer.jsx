@@ -24,7 +24,7 @@ export default function Footer() {
           <div className="max-w-xs">
             {/* Logo */}
             <a href="#" className="inline-flex items-center gap-2.5 mb-4">
-              <img src="/icons/logo.svg" alt="رفيق" className="w-7 h-7 brightness-0 invert" />
+              <img src={`${import.meta.env.BASE_URL}icons/logo.svg`} alt="رفيق" className="w-7 h-7 brightness-0 invert" />
               <span className="logo-wordmark logo-wordmark-lg text-white">رَفِيقْ</span>
             </a>
 

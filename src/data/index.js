@@ -9,7 +9,7 @@ export const navLinks = [
   { label: 'التواصل', labelEn: 'Contact', href: '#footer' },
 ];
 
-export const showcaseItems = [
+const rawShowcaseItems = [
   { src: '/icons/main.png', alt: 'الرئيسية', label: 'الرئيسية' },
   { src: '/icons/salaa.png', alt: 'مواقيت الصلاة', label: 'مواقيت الصلاة' },
   { src: '/icons/quraan.png', alt: 'المصحف الكريم', label: 'المصحف' },
@@ -21,6 +21,11 @@ export const showcaseItems = [
   { src: '/icons/min1.png', alt: 'واجهات أخرى', label: 'واجهات' },
   { src: '/icons/quraann.png', alt: 'سورة الكهف', label: 'الكهف' },
 ];
+
+export const showcaseItems = rawShowcaseItems.map(item => ({
+  ...item,
+  src: `${import.meta.env.BASE_URL}${item.src.replace(/^\//, '')}`
+}));
 
 export const dailyJourney = [
   {

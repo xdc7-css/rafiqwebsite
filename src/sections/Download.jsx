@@ -32,7 +32,7 @@ export default function Download() {
                 animate={phoneInView ? { opacity: 1, x: 0, rotateY: 0 } : {}}
                 transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
               >
-                <PhoneMockup src="/icons/main.png" alt="تطبيق رفيق" floating parallax />
+                <PhoneMockup src={`${import.meta.env.BASE_URL}icons/main.png`} alt="تطبيق رفيق" floating parallax />
               </motion.div>
             </div>
           </motion.div>

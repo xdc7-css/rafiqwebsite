@@ -9,7 +9,7 @@ const chapters = [
     id: 'front',
     title: 'الاستقبال',
     description: 'قبل أي شيء، يحيّيك الهدوء. شاشة البداية ليست مجرد ترحيب. إنها مساحة صفاء تدعوك للبقاء.',
-    src: '/icons/front.png',
+    src: `${import.meta.env.BASE_URL}icons/front.png`,
     floatingCards: [
       { icon: FiStar, text: 'ترحيب أنيق', sub: 'جاهزة منذ اللحظة الأولى' },
       { icon: FiClock, text: 'حاضر دائمًا', sub: 'افتحه وابدأ رحلتك مباشرة' },
@@ -28,7 +28,7 @@ const chapters = [
     id: 'salaa',
     title: 'الصلاة',
     description: 'يومك كله ينتظم حولها. رفيق يذكّرك بها في وقتها، بهدوء يليق بقدسية اللحظة.',
-    src: '/icons/salaa.png',
+    src: `${import.meta.env.BASE_URL}icons/salaa.png`,
     floatingCards: [
       { icon: FiClock, text: 'موعد الصلاة القادم', sub: 'الفجر · ٥:٣٢ ص' },
       { icon: FiCalendar, text: 'التقويم الهجري', sub: '١٥ رمضان ١٤٤٦' },
@@ -47,7 +47,7 @@ const chapters = [
     id: 'quraan',
     title: 'القرآن',
     description: 'كلمات الله تأنس بها وحدك. اقرأ، استمع، واحفظ موضعك، وكأن المصحف في جيبك.',
-    src: '/icons/quraan.png',
+    src: `${import.meta.env.BASE_URL}icons/quraan.png`,
     floatingCards: [
       { icon: FiBook, text: 'آخر قراءة', sub: 'الكهف · آية ١' },
       { icon: FiHeadphones, text: 'تلاوة تختارها', sub: 'أصوات نخبة من القرّاء' },
@@ -66,7 +66,7 @@ const chapters = [
     id: 'adkar',
     title: 'الأذكار',
     description: 'ذكر الله يملأ اليوم نوراً. رفيق يرتب لك أذكار الصباح والمساء وما بينهما بكل لطف.',
-    src: '/icons/adkar.png',
+    src: `${import.meta.env.BASE_URL}icons/adkar.png`,
     floatingCards: [
       { icon: FiSunrise, text: 'أذكار الصباح', sub: 'النور الأول لنهارك' },
       { icon: FiMoon, text: 'أذكار المساء', sub: 'سكينة تودّع بها يومك' },
@@ -85,7 +85,7 @@ const chapters = [
     id: 'sphaa',
     title: 'التسبيح',
     description: 'كلّما شغلت يدك، ذكر قلبك. حركات بسيطة تتحول إلى عبادة بلا تكلف.',
-    src: '/icons/sphaa.png',
+    src: `${import.meta.env.BASE_URL}icons/sphaa.png`,
     floatingCards: [
       { icon: FiCircle, text: 'سبحان الله', sub: 'والحمد لله' },
       { icon: FiStar, text: 'الله أكبر', sub: 'لا إله إلا الله' },
@@ -104,7 +104,7 @@ const chapters = [
     id: 'qibla',
     title: 'القبلة',
     description: 'أينما كنت، تعرف أين تتجه. بوصلة دقيقة ترشدك إلى القبلة دون اتصال ولا حيرة.',
-    src: '/icons/qibla.png',
+    src: `${import.meta.env.BASE_URL}icons/qibla.png`,
     floatingCards: [
       { icon: FiCompass, text: 'اتجاه القبلة', sub: 'قرص يوجهك بدقة' },
       { icon: FiMapPin, text: 'المسافة', sub: 'تعرف كم تبعد' },
@@ -123,7 +123,7 @@ const chapters = [
     id: 'ahadeth',
     title: 'الأحاديث',
     description: 'كلمات النبوة تأتيك مختارة بعناية. تقرؤها في هدوء، تتدبرها بتأمل.',
-    src: '/icons/ahadeth.png',
+    src: `${import.meta.env.BASE_URL}icons/ahadeth.png`,
     floatingCards: [
       { icon: FiBookOpen, text: 'حديث اليوم', sub: 'من الصحيحين مختاراً' },
       { icon: FiSearch, text: 'بحث', sub: 'يصلك بما تبحث عنه' },
@@ -142,7 +142,7 @@ const chapters = [
     id: 'settings',
     title: 'الإعدادات',
     description: 'لا يوجد حل واحد يناسب الجميع. رفيق يتيح لك أن تجعله كما تحب. من المظهر إلى التفاصيل.',
-    src: '/icons/settings.png',
+    src: `${import.meta.env.BASE_URL}icons/settings.png`,
     floatingCards: [
       { icon: FiSliders, text: 'التخصيص', sub: 'اجعله تطبيقك أنت' },
       { icon: FiMoon, text: 'المظهر', sub: 'داكن أم فاتح' },

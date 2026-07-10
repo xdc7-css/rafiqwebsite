@@ -245,7 +245,7 @@ export default function Navbar() {
             {/* Logo */}
             <div className="flex items-center gap-3 py-1 select-none shrink-0">
               <img
-                src="/icons/logo.svg"
+                src={`${import.meta.env.BASE_URL}icons/logo.svg`}
                 alt="رفيق"
                 className="w-[18px] h-[18px]"
                 style={{ filter: 'brightness(0) invert(1)' }}
@@ -396,7 +396,7 @@ export default function Navbar() {
               </div>
               <div className="flex justify-center mb-6 mt-2">
                 <div className="flex items-center gap-2 px-4 py-1.5 rounded-full" style={{ border: '1px solid rgba(216,178,90,0.15)', background: 'rgba(255,255,255,0.02)' }}>
-                  <img src="/icons/logo.svg" alt="رفيق" className="w-4 h-4" style={{ filter: 'brightness(0) invert(1)' }} />
+                  <img src={`${import.meta.env.BASE_URL}icons/logo.svg`} alt="رفيق" className="w-4 h-4" style={{ filter: 'brightness(0) invert(1)' }} />
                   <span className="logo-wordmark text-white/90 text-xs">رَفِيقْ</span>
                 </div>
               </div>

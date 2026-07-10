@@ -67,7 +67,7 @@ export default function Hero() {
 
         <motion.div className="flex justify-center" {...fadeUp(0.25)}>
           <div className="relative w-[65vw] max-w-[280px]">
-            <PhoneMockup src="/icons/front.png" alt="تطبيق رفيق" floating />
+            <PhoneMockup src={`${import.meta.env.BASE_URL}icons/front.png`} alt="تطبيق رفيق" floating />
             <div className="absolute -inset-6 bg-gold/[0.05] rounded-full blur-3xl -z-10" />
           </div>
         </motion.div>
@@ -125,7 +125,7 @@ export default function Hero() {
 
         <motion.div className="w-[340px] shrink-0" {...fadeUp(0.25)}>
           <div className="relative">
-            <PhoneMockup src="/icons/front.png" alt="تطبيق رفيق" floating parallax />
+            <PhoneMockup src={`${import.meta.env.BASE_URL}icons/front.png`} alt="تطبيق رفيق" floating parallax />
             <div className="absolute -inset-6 bg-gold/[0.05] rounded-full blur-3xl -z-10" />
           </div>
         </motion.div>

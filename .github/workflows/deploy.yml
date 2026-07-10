@@ -44,6 +44,9 @@ jobs:
       - name: Build production bundle
         run: npm run build -- --base="${{ steps.pages.outputs.base_path }}"
 
+      - name: Copy index.html to 404.html for SPA fallback
+        run: cp dist/index.html dist/404.html
+
       - name: Upload build artifact
         uses: actions/upload-pages-artifact@v3
         with:
