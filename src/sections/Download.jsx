@@ -7,6 +7,7 @@ import MagneticButton from '../components/MagneticButton';
 import BackgroundOrnaments from '../components/BackgroundOrnaments';
 
 const stars = Array(5).fill(null);
+const ANDROID_APK_URL = 'https://github.com/xdc7-css/rafiqwebsite/releases/download/Rafiq.App/rafiq.apk';
 
 export default function Download() {
   const ref = useRef(null);
@@ -70,7 +71,9 @@ export default function Download() {
                 </a>
               </MagneticButton>
               <a
-                href="#"
+                href={ANDROID_APK_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2.5 border border-white/[0.1] text-white/65 px-7 py-3 rounded-button text-sm font-medium hover:bg-white/[0.04] transition-all duration-300 font-arabic"
               >
                 <FaGooglePlay size={17} />

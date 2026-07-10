@@ -12,7 +12,7 @@
     "android": "6.0",
     "ios": "14.0"
   },
-  "android_apk": "",
+  "android_apk": "https://github.com/xdc7-css/rafiqwebsite/releases/download/Rafiq.App/rafiq.apk",
   "ios_ipa": "",
   "google_play_url": "",
   "app_store_url": "",

@@ -10,6 +10,7 @@ const navItems = [
   { label: 'الأسئلة', href: '#faq' },
   { label: 'التواصل', href: '#footer' },
 ];
+const ANDROID_APK_URL = 'https://github.com/xdc7-css/rafiqwebsite/releases/download/Rafiq.App/rafiq.apk';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -34,6 +35,11 @@ export default function Navbar() {
     let targetId = href.slice(1);
     const el = document.getElementById(targetId);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
+  }, []);
+
+  const openAndroidDownload = useCallback(() => {
+    setMobileOpen(false);
+    window.open(ANDROID_APK_URL, '_blank', 'noopener,noreferrer');
   }, []);
 
   // Track active section on scroll
@@ -326,7 +332,7 @@ export default function Navbar() {
             {/* CTA Button */}
             <div className="flex items-center pl-2 shrink-0">
               <button
-                onClick={() => scrollToSection('#download')}
+                onClick={openAndroidDownload}
                 className="relative flex items-center justify-center gap-2 px-5 h-[34px] rounded-full text-[12px] font-semibold font-arabic cursor-pointer transition-all duration-200"
                 style={{
                   background: '#D8B25A',
@@ -425,7 +431,7 @@ export default function Navbar() {
                   transition={{ delay: navItems.length * 0.04 + 0.1, duration: 0.25 }}
                 >
                   <button
-                    onClick={() => scrollToSection('#download')}
+                    onClick={openAndroidDownload}
                     className="w-full flex items-center justify-center gap-2 bg-[#D8B25A] text-[#0A1220] py-3.5 rounded-xl text-sm font-semibold shadow-md font-arabic cursor-pointer hover:bg-[#E5C16E] transition-colors"
                   >
                     <FiDownload size={15} />
