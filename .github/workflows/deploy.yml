@@ -41,8 +41,17 @@ jobs:
         id: pages
         uses: actions/configure-pages@v4
 
+      - name: Resolve base path
+        id: base
+        run: |
+          if [ -f public/CNAME ]; then
+            echo "path=/" >> "$GITHUB_OUTPUT"
+          else
+            echo "path=${{ steps.pages.outputs.base_path }}" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Build production bundle
-        run: npm run build -- --base="${{ steps.pages.outputs.base_path }}"
+        run: npm run build -- --base="${{ steps.base.outputs.path }}"
 
       - name: Copy index.html to 404.html for SPA fallback
         run: cp dist/index.html dist/404.html
