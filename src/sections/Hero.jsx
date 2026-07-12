@@ -3,6 +3,7 @@ import { FaApple, FaGooglePlay } from 'react-icons/fa';
 import { FiCheck } from 'react-icons/fi';
 import PhoneMockup from '../components/PhoneMockup';
 import BackgroundOrnaments from '../components/BackgroundOrnaments';
+import { useRelease } from '../context/ReleaseContext';
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 12 },
@@ -10,9 +11,14 @@ const fadeUp = (delay = 0) => ({
   transition: { duration: 0.45, delay, ease: [0.25, 0.1, 0.25, 1] },
 });
 
-const ANDROID_APK_URL = 'https://github.com/xdc7-css/rafiqwebsite/releases/download/Rafiq.App/rafiq.apk';
-
 export default function Hero() {
+  const { isLoading, error, primaryAssetUrl } = useRelease();
+  const isDownloadDisabled = isLoading || Boolean(error) || !primaryAssetUrl;
+
+  const handleDownloadClick = (event) => {
+    if (isDownloadDisabled) event.preventDefault();
+  };
+
   return (
     <section id="hero" className="relative overflow-hidden bg-bg-primary">
       <BackgroundOrnaments preset="hero" />
@@ -49,10 +55,12 @@ export default function Hero() {
               <span className="soon-badge">SOON</span>
             </a>
             <a
-              href={ANDROID_APK_URL}
+              href={isDownloadDisabled ? '#' : primaryAssetUrl}
+              onClick={handleDownloadClick}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 inline-flex items-center justify-center gap-2 bg-white/[0.06] text-white/85 px-5 py-3 rounded-full text-sm font-semibold border border-white/[0.08] font-arabic"
+              aria-disabled={isDownloadDisabled}
+              className={`flex-1 inline-flex items-center justify-center gap-2 bg-white/[0.06] text-white/85 px-5 py-3 rounded-full text-sm font-semibold border border-white/[0.08] font-arabic ${isDownloadDisabled ? 'opacity-50 cursor-not-allowed' : ''}`}
             >
               <FaGooglePlay size={15} />
               <span>Google Play</span>
@@ -109,10 +117,12 @@ export default function Hero() {
               <span className="soon-badge">SOON</span>
             </a>
             <a
-              href={ANDROID_APK_URL}
+              href={isDownloadDisabled ? '#' : primaryAssetUrl}
+              onClick={handleDownloadClick}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 bg-white/[0.06] text-white/75 px-8 py-3.5 rounded-full text-sm font-semibold border border-white/[0.08] font-arabic"
+              aria-disabled={isDownloadDisabled}
+              className={`inline-flex items-center gap-2.5 bg-white/[0.06] text-white/75 px-8 py-3.5 rounded-full text-sm font-semibold border border-white/[0.08] font-arabic ${isDownloadDisabled ? 'opacity-50 cursor-not-allowed' : ''}`}
             >
               <FaGooglePlay size={17} />
               Google Play
