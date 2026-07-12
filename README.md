@@ -64,7 +64,7 @@ The application combines elegant UI/UX with reliable Islamic content, accurate c
 📱 Screenshots
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/xdc7-css/rafiqwebsite/main/docs/images/front.png" width="220"/>
+  <img src="[https://raw.githubusercontent.com/xdc7-css/rafiqwebsite/main/docs/images/front.png](https://github.com/xdc7-css/rafiqwebsite/blob/main/assets/icons/front.png)" width="220"/>
   <img src="https://raw.githubusercontent.com/xdc7-css/rafiqwebsite/main/docs/images/main.png" width="220"/>
   <img src="https://raw.githubusercontent.com/xdc7-css/rafiqwebsite/main/docs/images/settings.png" width="220"/>
 </p>
