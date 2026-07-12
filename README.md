@@ -1,12 +1,15 @@
 <div align="center">
 
-<img src="https://github.com/xdc7-css/rafiqwebsite/blob/main/assets/icons/logo.png?raw=true" alt="Rafeeq Logo" width="150"/>
+<img src="https://raw.githubusercontent.com/xdc7-css/rafiqwebsite/main/assets/icons/logo.png" width="160"/>
 
-# رَفيِقْ
+<h1>رَفيِقْ</h1>
 
-### Premium Islamic Companion
+<img src="https://readme-typing-svg.demolab.com?font=Inter&weight=600&size=28&duration=2500&pause=1000&center=true&vCenter=true&width=650&lines=Premium+Islamic+Companion;Crafted+with+Flutter;Elegant+%E2%80%A2+Modern+%E2%80%A2+Reliable" />
 
 </div>
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=1E2A78&height=120&section=header"/>
+
 *A modern Islamic application crafted with care, elegance, and technology.*
 
 [![Flutter](https://img.shields.io/badge/Flutter-3.x-02569B?style=for-the-badge&logo=flutter&logoColor=white)]()
