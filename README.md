@@ -65,26 +65,6 @@ The application combines elegant UI/UX with reliable Islamic content, accurate c
 
 <p align="center">
   <img src="[https://raw.githubusercontent.com/xdc7-css/rafiqwebsite/main/docs/images/front.png](https://github.com/xdc7-css/rafiqwebsite/blob/main/assets/icons/front.png)" width="220"/>
-  <img src="https://raw.githubusercontent.com/xdc7-css/rafiqwebsite/main/docs/images/main.png" width="220"/>
-  <img src="https://raw.githubusercontent.com/xdc7-css/rafiqwebsite/main/docs/images/settings.png" width="220"/>
-</p>
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/xdc7-css/rafiqwebsite/main/docs/images/qibla.png" width="220"/>
-  <img src="https://raw.githubusercontent.com/xdc7-css/rafiqwebsite/main/docs/images/quraan.png" width="220"/>
-  <img src="https://raw.githubusercontent.com/xdc7-css/rafiqwebsite/main/docs/images/adkar.png" width="220"/>
-</p>
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/xdc7-css/rafiqwebsite/main/docs/images/ahadeth.png" width="220"/>
-  <img src="https://raw.githubusercontent.com/xdc7-css/rafiqwebsite/main/docs/images/salaa.png" width="220"/>
-  <img src="https://raw.githubusercontent.com/xdc7-css/rafiqwebsite/main/docs/images/sphaa.png" width="220"/>
-</p>
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/xdc7-css/rafiqwebsite/main/docs/images/pin.png" width="220"/>
-  <img src="https://raw.githubusercontent.com/xdc7-css/rafiqwebsite/main/docs/images/pin%202.png" width="220"/>
-</p>
 ---
 
 # Download
