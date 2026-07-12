@@ -147,9 +147,7 @@ No manual website updates are required.
 
 <p align="center">
 
-<img height="180" src="https://github-readme-stats.vercel.app/api?username=xdc7-css&show_icons=true&theme=tokyonight&hide_border=true"/>
-
-<img height="180" src="https://github-readme-stats.vercel.app/api/top-langs/?username=xdc7-css&layout=compact&theme=tokyonight&hide_border=true"/>
+<img src="https://raw.githubusercontent.com/platane/snk/output/github-contribution-grid-snake-dark.svg"/>
 
 </p>
 
