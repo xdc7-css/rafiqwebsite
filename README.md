@@ -145,11 +145,13 @@ No manual website updates are required.
 
 ---
 
-# Contributing
+<p align="center">
 
-Contributions, suggestions and feature requests are always welcome.
+<img height="180" src="https://github-readme-stats.vercel.app/api?username=xdc7-css&show_icons=true&theme=tokyonight&hide_border=true"/>
 
-Feel free to open an Issue or submit a Pull Request.
+<img height="180" src="https://github-readme-stats.vercel.app/api/top-langs/?username=xdc7-css&layout=compact&theme=tokyonight&hide_border=true"/>
+
+</p>
 
 ---
 
