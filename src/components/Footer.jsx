@@ -1,10 +1,11 @@
 import { FiHeart, FiArrowUp } from 'react-icons/fi';
 import { FaInstagram, FaLinkedinIn, FaGithub } from 'react-icons/fa';
 import { footerLinks } from '../data';
-
-const ANDROID_APK_URL = 'https://github.com/xdc7-css/rafiqwebsite/releases/download/Rafiq.App/rafiq.apk';
+import { useRelease } from '../hooks/useRelease';
 
 export default function Footer() {
+  const { isLoading, error, primaryAssetUrl } = useRelease();
+  const isDownloadDisabled = isLoading || Boolean(error) || !primaryAssetUrl;
   const socials = [
     { icon: FaInstagram, href: 'https://www.instagram.com/203.9.7', label: 'Instagram' },
     { icon: FaLinkedinIn, href: 'https://www.linkedin.com/in/hussein-ali-37556633b/', label: 'LinkedIn' },
@@ -66,13 +67,17 @@ export default function Footer() {
                     onClick={(e) => {
                       e.preventDefault();
                       if (link.href === '#download') {
-                        window.open(ANDROID_APK_URL, '_blank', 'noopener,noreferrer');
+                        if (!isDownloadDisabled) {
+                          window.open(primaryAssetUrl, '_blank', 'noopener,noreferrer');
+                        }
                         return;
                       }
                       const el = document.getElementById(link.href.slice(1));
                       if (el) el.scrollIntoView({ behavior: 'smooth' });
                     }}
                     className="text-sm text-white/35 hover:text-white/70 transition-colors duration-200 font-arabic"
+                    aria-disabled={link.href === '#download' && isDownloadDisabled}
+                    style={link.href === '#download' && isDownloadDisabled ? { opacity: 0.5, cursor: 'not-allowed' } : undefined}
                   >
                     {link.label}
                   </a>

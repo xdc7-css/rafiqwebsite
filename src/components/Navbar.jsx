@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
 import { FiDownload, FiMenu, FiX } from 'react-icons/fi';
+import { useRelease } from '../hooks/useRelease';
 
 const navItems = [
   { label: 'الرئيسية', href: '#hero' },
@@ -10,9 +11,9 @@ const navItems = [
   { label: 'الأسئلة', href: '#faq' },
   { label: 'التواصل', href: '#footer' },
 ];
-const ANDROID_APK_URL = 'https://github.com/xdc7-css/rafiqwebsite/releases/download/Rafiq.App/rafiq.apk';
-
 export default function Navbar() {
+  const { isLoading, error, primaryAssetUrl } = useRelease();
+  const isDownloadDisabled = isLoading || Boolean(error) || !primaryAssetUrl;
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -39,8 +40,9 @@ export default function Navbar() {
 
   const openAndroidDownload = useCallback(() => {
     setMobileOpen(false);
-    window.open(ANDROID_APK_URL, '_blank', 'noopener,noreferrer');
-  }, []);
+    if (isDownloadDisabled) return;
+    window.open(primaryAssetUrl, '_blank', 'noopener,noreferrer');
+  }, [isDownloadDisabled, primaryAssetUrl]);
 
   // Track active section on scroll
   useEffect(() => {
@@ -339,6 +341,8 @@ export default function Navbar() {
                   color: '#070F1A',
                   border: '1px solid rgba(0, 0, 0, 0.15)',
                   boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 2px 8px rgba(0, 0, 0, 0.12)',
+                  opacity: isDownloadDisabled ? 0.5 : 1,
+                  pointerEvents: isDownloadDisabled ? 'none' : 'auto',
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.backgroundColor = '#E5C16E';
@@ -433,7 +437,8 @@ export default function Navbar() {
                   <button
                     onClick={openAndroidDownload}
                     className="w-full flex items-center justify-center gap-2 bg-[#D8B25A] text-[#0A1220] py-3.5 rounded-xl text-sm font-semibold shadow-md font-arabic cursor-pointer hover:bg-[#E5C16E] transition-colors"
-                  >
+                      disabled={isDownloadDisabled}
+                    >
                     <FiDownload size={15} />
                     حمّل التطبيق
                   </button>
