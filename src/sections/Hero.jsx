@@ -3,7 +3,7 @@ import { FaApple, FaGooglePlay } from 'react-icons/fa';
 import { FiCheck } from 'react-icons/fi';
 import PhoneMockup from '../components/PhoneMockup';
 import BackgroundOrnaments from '../components/BackgroundOrnaments';
-import { useRelease } from '../context/ReleaseContext';
+import { useRelease } from '../hooks/useRelease';
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 12 },

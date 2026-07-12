@@ -1,7 +1,7 @@
 import { FiHeart, FiArrowUp } from 'react-icons/fi';
 import { FaInstagram, FaLinkedinIn, FaGithub } from 'react-icons/fa';
 import { footerLinks } from '../data';
-import { useRelease } from '../context/ReleaseContext';
+import { useRelease } from '../hooks/useRelease';
 
 export default function Footer() {
   const { isLoading, error, primaryAssetUrl } = useRelease();

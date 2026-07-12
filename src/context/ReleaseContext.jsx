@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+import { createContext, useEffect, useMemo, useState } from 'react';
 import { RELEASE_API_URL, normalizeReleaseData } from '../utils/githubRelease';
 
 const ReleaseContext = createContext(null);
@@ -14,6 +14,7 @@ export function ReleaseProvider({ children }) {
 
     const fetchLatestRelease = async () => {
       try {
+        // Fetch once on app load and reuse across all download surfaces.
         const response = await fetch(RELEASE_API_URL, {
           signal: controller.signal,
           headers: {
@@ -56,10 +57,4 @@ export function ReleaseProvider({ children }) {
   return <ReleaseContext.Provider value={value}>{children}</ReleaseContext.Provider>;
 }
 
-export function useRelease() {
-  const context = useContext(ReleaseContext);
-  if (!context) {
-    throw new Error('useRelease must be used within a ReleaseProvider');
-  }
-  return context;
-}
+export { ReleaseContext };

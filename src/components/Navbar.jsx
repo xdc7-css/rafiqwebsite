@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
 import { FiDownload, FiMenu, FiX } from 'react-icons/fi';
-import { useRelease } from '../context/ReleaseContext';
+import { useRelease } from '../hooks/useRelease';
 
 const navItems = [
   { label: 'الرئيسية', href: '#hero' },

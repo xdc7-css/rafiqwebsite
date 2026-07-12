@@ -5,7 +5,7 @@ import { FiMonitor, FiStar } from 'react-icons/fi';
 import PhoneMockup from '../components/PhoneMockup';
 import MagneticButton from '../components/MagneticButton';
 import BackgroundOrnaments from '../components/BackgroundOrnaments';
-import { useRelease } from '../context/ReleaseContext';
+import { useRelease } from '../hooks/useRelease';
 
 const stars = Array(5).fill(null);
 
