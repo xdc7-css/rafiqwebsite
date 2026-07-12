@@ -1,11 +1,12 @@
 <div align="center">
 
-<img src="public/assets/logo.png" width="120" alt="Rafeeq Logo"/>
+<img src="https://github.com/xdc7-css/rafiqwebsite/blob/main/assets/icons/logo.png?raw=true" alt="Rafeeq Logo" width="150"/>
 
 # رَفيِقْ
 
 ### Premium Islamic Companion
 
+</div>
 *A modern Islamic application crafted with care, elegance, and technology.*
 
 [![Flutter](https://img.shields.io/badge/Flutter-3.x-02569B?style=for-the-badge&logo=flutter&logoColor=white)]()
