@@ -1,8 +1,7 @@
 import { FiHeart, FiArrowUp } from 'react-icons/fi';
 import { FaInstagram, FaLinkedinIn, FaGithub } from 'react-icons/fa';
 import { footerLinks } from '../data';
-
-const ANDROID_APK_URL = 'https://github.com/xdc7-css/rafiqwebsite/releases/latest/download/rafiq.apk';
+import { ANDROID_APK_URL } from '../constants/urls';
 
 export default function Footer() {
   const socials = [

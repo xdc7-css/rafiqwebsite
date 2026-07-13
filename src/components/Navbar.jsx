@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
 import { FiDownload, FiMenu, FiX } from 'react-icons/fi';
+import { ANDROID_APK_URL } from '../constants/urls';
 
 const navItems = [
   { label: 'الرئيسية', href: '#hero' },
@@ -10,8 +11,6 @@ const navItems = [
   { label: 'الأسئلة', href: '#faq' },
   { label: 'التواصل', href: '#footer' },
 ];
-const ANDROID_APK_URL = 'https://github.com/xdc7-css/rafiqwebsite/releases/latest/download/rafiq.apk';
-
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('');
