@@ -10,7 +10,7 @@ const fadeUp = (delay = 0) => ({
   transition: { duration: 0.45, delay, ease: [0.25, 0.1, 0.25, 1] },
 });
 
-const ANDROID_APK_URL = 'https://github.com/xdc7-css/rafiqwebsite/releases/download/Rafiq.App/rafiq.apk';
+const ANDROID_APK_URL = 'https://github.com/xdc7-css/rafiqwebsite/releases/latest/download/rafiq.apk';
 
 export default function Hero() {
   return (
