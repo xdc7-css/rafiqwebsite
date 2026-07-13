@@ -5,9 +5,9 @@ import { FiMonitor, FiStar } from 'react-icons/fi';
 import PhoneMockup from '../components/PhoneMockup';
 import MagneticButton from '../components/MagneticButton';
 import BackgroundOrnaments from '../components/BackgroundOrnaments';
+import { ANDROID_APK_URL } from '../constants/urls';
 
 const stars = Array(5).fill(null);
-const ANDROID_APK_URL = 'https://github.com/xdc7-css/rafiqwebsite/releases/latest/download/rafiq.apk';
 
 export default function Download() {
   const ref = useRef(null);
