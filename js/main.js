@@ -32,7 +32,7 @@ function getDefaultConfig() {
     description: 'تطبيق ذكي يوفر لك الأذكار اليومية، أوقات الصلاة، السبحة الإلكترونية',
     description_en: 'A smart app providing daily Adhkar, prayer times, digital Tasbih, Quran, and Hadith.',
     version: '1.0.0', release_date: '2026-06-28', file_size: '12.4 MB',
-    android_apk: 'https://github.com/xdc7-css/rafiqwebsite/releases/download/Rafiq.App/rafiq.apk', ios_ipa: '',
+    android_apk: 'https://github.com/xdc7-css/rafiqwebsite/releases/latest/download/rafiq.apk', ios_ipa: '',
     google_play_url: '', app_store_url: '',
     app_icon: 'assets/icons/logo.svg',
     screenshots: { hero: 'assets/icons/front.png' },

@@ -10,7 +10,7 @@ const navItems = [
   { label: 'الأسئلة', href: '#faq' },
   { label: 'التواصل', href: '#footer' },
 ];
-const ANDROID_APK_URL = 'https://github.com/xdc7-css/rafiqwebsite/releases/download/Rafiq.App/rafiq.apk';
+const ANDROID_APK_URL = 'https://github.com/xdc7-css/rafiqwebsite/releases/latest/download/rafiq.apk';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
