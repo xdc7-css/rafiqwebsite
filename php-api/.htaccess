@@ -1,0 +1,47 @@
+RewriteEngine On
+RewriteBase /
+
+# ─── Security: Block sensitive directories ──────────────────
+RewriteRule ^config/ - [F,L]
+RewriteRule ^helpers/ - [F,L]
+RewriteRule ^scripts/ - [F,L]
+RewriteRule ^quran/ - [F,L]
+
+# ─── API Routing: /api/health → api/health.php ─────────────
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} ^/api/
+RewriteRule ^api/([a-zA-Z0-9_]+)(/?)$ api/$1.php [L,QSA]
+
+# ─── Asset Routing: /assets/* → public/assets/* ────────────
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^assets/(.+)$ public/assets/$1 [L,QSA]
+
+# ─── Security: Disable directory listing ────────────────────
+Options -Indexes
+
+# ─── Security: Block hidden files ───────────────────────────
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+# ─── Gzip Compression ──────────────────────────────────────
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE text/javascript
+    AddOutputFilterByType DEFLATE application/json
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE image/svg+xml
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE text/xml
+</IfModule>
+
+# ─── Brotli Compression (if available) ─────────────────────
+<IfModule mod_brotli.c>
+    AddOutputFilterByType BROTLI_COMPRESS text/html
+    AddOutputFilterByType BROTLI_COMPRESS text/css
+    AddOutputFilterByType BROTLI_COMPRESS text/javascript
+    AddOutputFilterByType BROTLI_COMPRESS application/json
+    AddOutputFilterByType BROTLI_COMPRESS application/javascript
+    AddOutputFilterByType BROTLI_COMPRESS image/svg+xml
+</IfModule>
