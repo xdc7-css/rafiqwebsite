@@ -1,0 +1,17 @@
+Options -Indexes
+
+# ─── SVG Asset Caching ─────────────────────────────────────
+<IfModule mod_headers.c>
+    <FilesMatch "\.(svg)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+        Header set Content-Type "image/svg+xml"
+        Header set Access-Control-Allow-Origin "*"
+        Header set ETag ""
+        Header unset Last-Modified
+    </FilesMatch>
+</IfModule>
+
+# ─── Enable Keep-Alive ─────────────────────────────────────
+<IfModule mod_headers.c>
+    Header set Connection "keep-alive"
+</IfModule>

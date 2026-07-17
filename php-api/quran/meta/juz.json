@@ -1,0 +1,302 @@
+[
+  {
+    "number": 1,
+    "name": "الٓمٓ",
+    "english_name": "Juz 1",
+    "start_page": 1,
+    "end_page": 21,
+    "start_surah": 1,
+    "end_surah": 2,
+    "total_pages": 21
+  },
+  {
+    "number": 2,
+    "name": "سَيَقُولُ",
+    "english_name": "Juz 2",
+    "start_page": 22,
+    "end_page": 41,
+    "start_surah": 2,
+    "end_surah": 2,
+    "total_pages": 20
+  },
+  {
+    "number": 3,
+    "name": "تِلْكَ الرُّسُلُ",
+    "english_name": "Juz 3",
+    "start_page": 42,
+    "end_page": 61,
+    "start_surah": 2,
+    "end_surah": 3,
+    "total_pages": 20
+  },
+  {
+    "number": 4,
+    "name": "لَنْ تَنَالُوا",
+    "english_name": "Juz 4",
+    "start_page": 62,
+    "end_page": 81,
+    "start_surah": 3,
+    "end_surah": 4,
+    "total_pages": 20
+  },
+  {
+    "number": 5,
+    "name": "وَالْمُحْصَنَاتُ",
+    "english_name": "Juz 5",
+    "start_page": 82,
+    "end_page": 101,
+    "start_surah": 4,
+    "end_surah": 4,
+    "total_pages": 20
+  },
+  {
+    "number": 6,
+    "name": "لَا يُحِبُّ اللَّهُ",
+    "english_name": "Juz 6",
+    "start_page": 102,
+    "end_page": 121,
+    "start_surah": 4,
+    "end_surah": 5,
+    "total_pages": 20
+  },
+  {
+    "number": 7,
+    "name": "وَإِذَا سَمِعُوا",
+    "english_name": "Juz 7",
+    "start_page": 122,
+    "end_page": 141,
+    "start_surah": 5,
+    "end_surah": 6,
+    "total_pages": 20
+  },
+  {
+    "number": 8,
+    "name": "وَلَوْ أَنَّنَا",
+    "english_name": "Juz 8",
+    "start_page": 142,
+    "end_page": 161,
+    "start_surah": 6,
+    "end_surah": 7,
+    "total_pages": 20
+  },
+  {
+    "number": 9,
+    "name": "قَالَ الْمَلَأُ",
+    "english_name": "Juz 9",
+    "start_page": 162,
+    "end_page": 181,
+    "start_surah": 7,
+    "end_surah": 8,
+    "total_pages": 20
+  },
+  {
+    "number": 10,
+    "name": "وَاعْلَمُوا",
+    "english_name": "Juz 10",
+    "start_page": 182,
+    "end_page": 201,
+    "start_surah": 8,
+    "end_surah": 9,
+    "total_pages": 20
+  },
+  {
+    "number": 11,
+    "name": "يَعْتَذِرُونَ",
+    "english_name": "Juz 11",
+    "start_page": 202,
+    "end_page": 221,
+    "start_surah": 9,
+    "end_surah": 11,
+    "total_pages": 20
+  },
+  {
+    "number": 12,
+    "name": "وَمَا مِنْ دَابَّةٍ",
+    "english_name": "Juz 12",
+    "start_page": 222,
+    "end_page": 241,
+    "start_surah": 11,
+    "end_surah": 12,
+    "total_pages": 20
+  },
+  {
+    "number": 13,
+    "name": "وَمَا أُبَرِّئُ",
+    "english_name": "Juz 13",
+    "start_page": 242,
+    "end_page": 261,
+    "start_surah": 12,
+    "end_surah": 14,
+    "total_pages": 20
+  },
+  {
+    "number": 14,
+    "name": "رُبَمَا",
+    "english_name": "Juz 14",
+    "start_page": 262,
+    "end_page": 281,
+    "start_surah": 15,
+    "end_surah": 16,
+    "total_pages": 20
+  },
+  {
+    "number": 15,
+    "name": "سُبْحَانَ الَّذِي",
+    "english_name": "Juz 15",
+    "start_page": 282,
+    "end_page": 301,
+    "start_surah": 17,
+    "end_surah": 18,
+    "total_pages": 20
+  },
+  {
+    "number": 16,
+    "name": "قُلْ هَلْ مِنْ شَيْءٍ",
+    "english_name": "Juz 16",
+    "start_page": 302,
+    "end_page": 321,
+    "start_surah": 18,
+    "end_surah": 20,
+    "total_pages": 20
+  },
+  {
+    "number": 17,
+    "name": "اقْتَرَبَ لِلنَّاسِ",
+    "english_name": "Juz 17",
+    "start_page": 322,
+    "end_page": 341,
+    "start_surah": 21,
+    "end_surah": 22,
+    "total_pages": 20
+  },
+  {
+    "number": 18,
+    "name": "قَدْ أَفْلَحَ",
+    "english_name": "Juz 18",
+    "start_page": 342,
+    "end_page": 361,
+    "start_surah": 23,
+    "end_surah": 25,
+    "total_pages": 20
+  },
+  {
+    "number": 19,
+    "name": "وَقُلْ جَاءَ الْحَقُّ",
+    "english_name": "Juz 19",
+    "start_page": 362,
+    "end_page": 381,
+    "start_surah": 25,
+    "end_surah": 27,
+    "total_pages": 20
+  },
+  {
+    "number": 20,
+    "name": "أَحَسِبَ النَّاسُ",
+    "english_name": "Juz 20",
+    "start_page": 382,
+    "end_page": 401,
+    "start_surah": 27,
+    "end_surah": 29,
+    "total_pages": 20
+  },
+  {
+    "number": 21,
+    "name": "اقْتَرَبَ لِلنَّاسِ",
+    "english_name": "Juz 21",
+    "start_page": 402,
+    "end_page": 421,
+    "start_surah": 29,
+    "end_surah": 33,
+    "total_pages": 20
+  },
+  {
+    "number": 22,
+    "name": "وَمَنْ يَقْنُتْ",
+    "english_name": "Juz 22",
+    "start_page": 422,
+    "end_page": 441,
+    "start_surah": 33,
+    "end_surah": 36,
+    "total_pages": 20
+  },
+  {
+    "number": 23,
+    "name": "وَالْعَادِيَاتِ",
+    "english_name": "Juz 23",
+    "start_page": 442,
+    "end_page": 461,
+    "start_surah": 36,
+    "end_surah": 39,
+    "total_pages": 20
+  },
+  {
+    "number": 24,
+    "name": "الَّذِينَ كَفَرُوا",
+    "english_name": "Juz 24",
+    "start_page": 462,
+    "end_page": 481,
+    "start_surah": 39,
+    "end_surah": 41,
+    "total_pages": 20
+  },
+  {
+    "number": 25,
+    "name": "الْمُلْكُ",
+    "english_name": "Juz 25",
+    "start_page": 482,
+    "end_page": 501,
+    "start_surah": 41,
+    "end_surah": 45,
+    "total_pages": 20
+  },
+  {
+    "number": 26,
+    "name": "قَالَ أَلَمْ",
+    "english_name": "Juz 26",
+    "start_page": 502,
+    "end_page": 521,
+    "start_surah": 46,
+    "end_surah": 51,
+    "total_pages": 20
+  },
+  {
+    "number": 27,
+    "name": "عَمَّ",
+    "english_name": "Juz 27",
+    "start_page": 522,
+    "end_page": 541,
+    "start_surah": 51,
+    "end_surah": 57,
+    "total_pages": 20
+  },
+  {
+    "number": 28,
+    "name": "قَدْ سَمِعَ اللَّهُ",
+    "english_name": "Juz 28",
+    "start_page": 542,
+    "end_page": 561,
+    "start_surah": 58,
+    "end_surah": 66,
+    "total_pages": 20
+  },
+  {
+    "number": 29,
+    "name": "تَبَارَكَ",
+    "english_name": "Juz 29",
+    "start_page": 562,
+    "end_page": 581,
+    "start_surah": 67,
+    "end_surah": 77,
+    "total_pages": 20
+  },
+  {
+    "number": 30,
+    "name": "عَمَّ",
+    "english_name": "Juz 30",
+    "start_page": 582,
+    "end_page": 604,
+    "start_surah": 78,
+    "end_surah": 114,
+    "total_pages": 23
+  }
+]

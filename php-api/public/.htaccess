@@ -1,0 +1,11 @@
+Options -Indexes
+
+# ─── Block hidden files ────────────────────────────────────
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+# ─── General asset caching ─────────────────────────────────
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+</IfModule>

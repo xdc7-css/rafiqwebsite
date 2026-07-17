@@ -1,0 +1,511 @@
+/* ============================================
+   ANIMATIONS — Islamic App Landing Page
+   ============================================ */
+
+/* ============================================
+   SCROLL REVEAL SYSTEM
+   ============================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Feature cards — 7 items, 0.04s increments */
+.reveal.visible .feature-card:nth-child(1) { transition-delay: 0.04s; }
+.reveal.visible .feature-card:nth-child(2) { transition-delay: 0.08s; }
+.reveal.visible .feature-card:nth-child(3) { transition-delay: 0.12s; }
+.reveal.visible .feature-card:nth-child(4) { transition-delay: 0.16s; }
+.reveal.visible .feature-card:nth-child(5) { transition-delay: 0.20s; }
+.reveal.visible .feature-card:nth-child(6) { transition-delay: 0.24s; }
+.reveal.visible .feature-card:nth-child(7) { transition-delay: 0.28s; }
+
+.feature-card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.55s var(--ease-out), transform 0.55s var(--ease-out);
+}
+
+.reveal.visible .feature-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* FAQ items — staggered */
+.reveal.visible .faq-item:nth-child(1) { transition-delay: 0.03s; }
+.reveal.visible .faq-item:nth-child(2) { transition-delay: 0.06s; }
+.reveal.visible .faq-item:nth-child(3) { transition-delay: 0.09s; }
+.reveal.visible .faq-item:nth-child(4) { transition-delay: 0.12s; }
+.reveal.visible .faq-item:nth-child(5) { transition-delay: 0.15s; }
+.reveal.visible .faq-item:nth-child(6) { transition-delay: 0.18s; }
+.reveal.visible .faq-item:nth-child(7) { transition-delay: 0.21s; }
+
+.faq-item {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.45s var(--ease-out), transform 0.45s var(--ease-out);
+}
+
+.reveal.visible .faq-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Device mockups within chapters — 0.2s delay */
+.reveal.visible .device-mockup {
+  transition-delay: 0.2s;
+}
+
+.device-mockup {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+
+.reveal.visible .device-mockup {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================
+   HERO ENTRANCE ANIMATIONS
+   ============================================ */
+.hero-badge {
+  animation: heroBadgeIn 0.8s var(--ease-out) 0.1s both;
+}
+
+.hero-title {
+  animation: heroTextIn 1s var(--ease-out) 0.2s both;
+}
+
+.hero-desc {
+  animation: heroFadeUp 0.8s var(--ease-out) 0.3s both;
+}
+
+.hero-actions {
+  animation: heroFadeUp 0.8s var(--ease-out) 0.4s both;
+}
+
+.hero-trust {
+  animation: heroFadeUp 0.8s var(--ease-out) 0.5s both;
+}
+
+.hero-phone-wrap {
+  animation: heroPhoneIn 1.2s var(--ease-out) 0.15s both;
+}
+
+.hero-float-prayer {
+  animation: heroFloatIn 1s var(--ease-out) 0.6s both;
+}
+
+.hero-float-stat {
+  animation: heroFloatIn 1s var(--ease-out) 0.8s both;
+}
+
+@keyframes heroBadgeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(16px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes heroTextIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroPhoneIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-80px) perspective(800px) rotateY(8deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) perspective(800px) rotateY(0);
+  }
+}
+
+@keyframes heroFloatIn {
+  0% {
+    opacity: 0;
+    transform: translateY(60px) scale(0.85);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ============================================
+   FLOATING / BREATHING
+   ============================================ */
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.hero-phone-inner {
+  animation: heroFloat 8s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.hero-badge-dot {
+  animation: pulseDot 2s ease-in-out infinite;
+}
+
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.hero-float-card:nth-child(1) {
+  animation: floatCard 5s ease-in-out infinite;
+}
+
+.hero-float-card:nth-child(2) {
+  animation: floatCard 5s ease-in-out infinite;
+  animation-delay: -1.5s;
+}
+
+.hero-float-card:nth-child(3) {
+  animation: floatCard 5s ease-in-out infinite;
+  animation-delay: -3s;
+}
+
+/* ============================================
+   DEVICE ANIMATIONS
+   ============================================ */
+@keyframes deviceFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.device-float {
+  animation: deviceFloat 7s ease-in-out infinite;
+}
+
+.device-float-delayed {
+  animation: deviceFloat 7s ease-in-out infinite;
+  animation-delay: -3.5s;
+}
+
+@keyframes deviceTilt {
+  0%, 100% { transform: perspective(600px) rotateY(0deg); }
+  25% { transform: perspective(600px) rotateY(3deg); }
+  75% { transform: perspective(600px) rotateY(-3deg); }
+}
+
+.device-tilt {
+  animation: deviceTilt 10s ease-in-out infinite;
+}
+
+/* ============================================
+   COMPASS / ORNAMENT ROTATIONS
+   ============================================ */
+@keyframes ringSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.ring-spin {
+  animation: ringSpin 60s linear infinite;
+}
+
+@keyframes ringSpinReverse {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-360deg); }
+}
+
+.ring-spin-reverse {
+  animation: ringSpinReverse 80s linear infinite;
+}
+
+/* ============================================
+   SCROLL HINT
+   ============================================ */
+@keyframes scrollHint {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(8px); opacity: 1; }
+}
+
+.hero-scroll-hint {
+  animation: scrollHint 2s ease-in-out infinite;
+}
+
+/* ============================================
+   HERO AMBIENCE
+   ============================================ */
+@keyframes heroGlowPulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.05); }
+}
+
+.hero-glow {
+  animation: heroGlowPulse 6s ease-in-out infinite;
+}
+
+/* ============================================
+   STARS / PARTICLES
+   ============================================ */
+@keyframes starFloat {
+  0% {
+    transform: translateY(0) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120vh) scale(0.5);
+    opacity: 0;
+  }
+}
+
+.star-particle {
+  animation: starFloat 20s linear infinite;
+}
+
+.star-particle:nth-child(2n) {
+  animation-duration: 15s;
+  animation-delay: -3s;
+}
+
+.star-particle:nth-child(3n) {
+  animation-duration: 25s;
+  animation-delay: -7s;
+}
+
+.star-particle:nth-child(4n) {
+  animation-duration: 18s;
+  animation-delay: -11s;
+}
+
+.star-particle:nth-child(5n) {
+  animation-duration: 22s;
+  animation-delay: -5s;
+}
+
+/* ============================================
+   STATS CARDS
+   ============================================ */
+@keyframes statsFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.stats-float {
+  animation: statsFloat 6s ease-in-out infinite;
+}
+
+.stats-float-delayed {
+  animation: statsFloat 6s ease-in-out infinite;
+  animation-delay: -3s;
+}
+
+/* ============================================
+   BADGE PULSE
+   ============================================ */
+@keyframes badgePulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.badge-live {
+  animation: badgePulse 2s ease-in-out infinite;
+}
+
+/* ============================================
+   REVIEW CARDS FLOAT
+   ============================================ */
+@keyframes reviewCardFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.review-card:nth-child(odd) {
+  animation: reviewCardFloat 5s ease-in-out infinite;
+}
+
+.review-card:nth-child(even) {
+  animation: reviewCardFloat 5s ease-in-out infinite;
+  animation-delay: -2.5s;
+}
+
+/* ============================================
+   UTILITY ANIMATIONS
+   ============================================ */
+.anim-fade-in {
+  opacity: 0;
+  animation: animFadeIn 0.7s var(--ease-out) forwards;
+}
+
+@keyframes animFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.anim-scale-in {
+  opacity: 0;
+  animation: animScaleIn 0.6s var(--ease-spring) forwards;
+}
+
+@keyframes animScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ============================================
+   HOVER EFFECTS
+   ============================================ */
+.hover-lift {
+  transition: transform 0.3s var(--ease-out);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+}
+
+.hover-glow {
+  transition: box-shadow 0.3s var(--ease-out);
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.25);
+}
+
+/* ============================================
+   REVIEWS BENTO — Card Floating
+   ============================================ */
+@keyframes reviewFloat1 {
+  0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); }
+  50% { transform: translateY(-8px) rotate(var(--r, 0deg)); }
+}
+@keyframes reviewFloat2 {
+  0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); }
+  50% { transform: translateY(-12px) rotate(var(--r, 0deg)); }
+}
+@keyframes reviewFloat3 {
+  0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); }
+  50% { transform: translateY(-6px) rotate(var(--r, 0deg)); }
+}
+
+/* ============================================
+   FAQ — Floating Elements
+   ============================================ */
+@keyframes faqFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+
+/* ============================================
+   TASBIH — Bead & Counter Animations
+   ============================================ */
+@keyframes beadBounce {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.35); }
+  70% { transform: scale(0.9); }
+  100% { transform: scale(1.15); }
+}
+
+@keyframes tasbihPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+
+/* ============================================
+   QIBLA — Compass Animations
+   ============================================ */
+@keyframes compassSweep {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes compassPulse {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 0.35; }
+}
+
+.qibla-compass-kaaba {
+  animation: compassPulse 3s ease-in-out infinite;
+}
+
+/* ============================================
+   PIN DECORATIONS
+   ============================================ */
+@keyframes pinFloat {
+  0%, 100% { transform: rotate(var(--pin-rot, 15deg)) translateY(0); }
+  50% { transform: rotate(var(--pin-rot, 15deg)) translateY(-10px); }
+}
+
+/* ============================================
+   HADITH VERSE
+   ============================================ */
+@keyframes hadithGlow {
+  0%, 100% { box-shadow: 0 0 10px rgba(212,175,55,0.05); }
+  50% { box-shadow: 0 0 25px rgba(212,175,55,0.12); }
+}
+
+.hadith-verse {
+  animation: hadithGlow 4s ease-in-out infinite;
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .hero-scroll-hint {
+    display: none;
+  }
+}

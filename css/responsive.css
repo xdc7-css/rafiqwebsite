@@ -1,0 +1,1450 @@
+﻿/* ============================================
+   RESPONSIVE — Complete Redesign
+   Islamic App Landing Page
+   Breakpoints: 1400 / 1200 / 992 / 768 / 576 / 360
+   ============================================ */
+
+/* ============================================
+   BASE MOBILE RESET
+   ============================================ */
+*,
+*::before,
+*::after {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  min-width: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+:root {
+  --mobile-padding: 20px;
+  --mobile-gap: 16px;
+  --mobile-radius: 16px;
+  --mobile-radius-lg: 20px;
+  --mobile-section: 64px;
+  --mobile-card-padding: 24px;
+  --mobile-btn-height: 52px;
+}
+
+/* ============================================
+   1400px — LARGE DESKTOP
+   ============================================ */
+@media (min-width: 1400px) {
+  .nav {
+    width: 65%;
+  }
+
+  .ch-hero {
+    gap: 60px;
+  }
+
+  .device-frame {
+    width: 260px;
+    height: 530px;
+  }
+
+  .ch-stats {
+    gap: 32px;
+  }
+
+  .ch-reviews {
+    padding: 180px 24px;
+  }
+
+  .reviews-bento {
+    gap: 24px;
+  }
+
+  .ch-faq-layout {
+    gap: 80px;
+  }
+}
+
+/* ============================================
+   1200px — DESKTOP / TABLET LANDSCAPE
+   ============================================ */
+@media (max-width: 1200px) {
+  :root {
+    --container-padding: 24px;
+  }
+
+  .nav {
+    width: 75%;
+  }
+
+  .ch-hero {
+    text-align: center;
+  }
+
+  .ch-hero-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-title-main {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-trust {
+    justify-content: center;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-glow-xl {
+    width: 400px;
+    height: 400px;
+  }
+
+  .hero-glow-gold {
+    width: 300px;
+    height: 300px;
+  }
+
+  .ch-features-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .ch-stats {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .footer-layout {
+    gap: 40px;
+  }
+}
+
+/* ============================================
+   992px — TABLET PORTRAIT
+   ============================================ */
+@media (max-width: 992px) {
+  :root {
+    --container-padding: 20px;
+    --mobile-section: 72px;
+  }
+
+  .device-frame {
+    width: 240px;
+    height: 490px;
+  }
+
+  .ch-hero-layout {
+    gap: 48px;
+  }
+
+  .hero-glow-xl {
+    width: 320px;
+    height: 320px;
+  }
+
+  .hero-glow-gold {
+    width: 240px;
+    height: 240px;
+  }
+
+  .ch-quran-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    text-align: center;
+  }
+
+  .quran-content-col,
+  .quran-verse-col {
+    align-items: center;
+  }
+
+  .quran-content-col .ch-desc {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .quran-verse-card {
+    max-width: 100%;
+  }
+
+  .quran-phone-col {
+    min-height: 440px;
+    order: -1;
+  }
+
+  .quran-device-stack {
+    width: 200px;
+    height: 410px;
+  }
+
+  .quran-pedestal {
+    width: 260px;
+    height: 200px;
+  }
+
+  .quran-pedestal-ring {
+    width: 150px;
+    height: 30px;
+  }
+
+  .quran-deco {
+    display: none;
+  }
+
+  .ch-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .feature-card {
+    padding: 24px;
+    border-radius: 22px;
+  }
+
+  .feature-card-title {
+    font-size: 1.1rem;
+  }
+
+  .feature-card-desc {
+    font-size: 0.82rem;
+    max-width: 100%;
+  }
+
+  .features-mockup .device-frame {
+    width: 150px;
+    height: 310px;
+    border-radius: 20px;
+  }
+
+  .features-mockup-main .device-frame {
+    width: 170px;
+    height: 350px;
+    border-radius: 24px;
+  }
+
+  .ch-prayer-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .ch-prayer .prayer-visual {
+    order: -1;
+  }
+
+  .prayer-highlights {
+    font-size: 0.85rem;
+  }
+
+  .ch-azkar-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .ch-azkar .azkar-visual {
+    order: -1;
+  }
+
+  .ch-tasbih-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .ch-tasbih .tasbih-visual {
+    order: -1;
+  }
+
+  .ch-qibla-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .ch-qibla .qibla-content {
+    order: -1;
+  }
+
+  .ch-hadith-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .ch-hadith .hadith-visual {
+    order: -1;
+  }
+
+  .ch-ramadan-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .ch-ramadan .ramadan-visual {
+    order: -1;
+  }
+
+  .ramadan-crescent {
+    width: 60px;
+    height: 60px;
+  }
+
+  .ch-download {
+    text-align: center;
+  }
+
+  .ch-download-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .ch-download .download-actions {
+    justify-content: center;
+  }
+
+  .footer-layout {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+}
+
+/* ============================================
+   768px — MOBILE
+   ============================================ */
+@media (max-width: 768px) {
+  :root {
+    --container-padding: var(--mobile-padding);
+    --mobile-section: 64px;
+  }
+
+  /* ---------- GLOBAL ---------- */
+  .section {
+    padding: var(--mobile-section) 0;
+  }
+
+  .container {
+    padding: 0 var(--container-padding);
+  }
+
+  .section-header {
+    margin-bottom: 40px;
+  }
+
+  .ch-tag {
+    font-size: 0.72rem;
+    padding: 5px 14px;
+    margin-bottom: 14px;
+  }
+
+  .ch-title {
+    font-size: clamp(1.6rem, 6vw, 2.2rem);
+    line-height: 1.3;
+  }
+
+  .ch-desc {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    max-width: 100%;
+  }
+
+  .reveal {
+    transform: translateY(20px);
+  }
+
+  /* ---------- NAV ---------- */
+  .nav-links {
+    display: none;
+  }
+
+  .mobile-overlay {
+    padding: 0;
+  }
+
+  .mobile-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* ---------- DEVICE / DEVICE MOCKUP ---------- */
+  .device-frame {
+    width: 220px;
+    height: 450px;
+  }
+
+  /* ---------- CHAPTER: HERO ---------- */
+  .ch-hero {
+    text-align: center;
+  }
+
+  .ch-hero-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .hero-ring {
+    display: none;
+  }
+
+  .hero-glow-xl {
+    width: 280px;
+    height: 280px;
+  }
+
+  .hero-glow-gold {
+    width: 200px;
+    height: 200px;
+  }
+
+  .hero-float-prayer {
+    width: 80px;
+    height: 80px;
+  }
+
+  .hero-float-stat {
+    width: 100px;
+    height: 60px;
+  }
+
+  .hero-title-main {
+    font-size: clamp(3rem, 15vw, 5rem);
+    margin-bottom: 12px;
+  }
+
+  .hero-trust {
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+
+  .hero-trust-item {
+    font-size: 0.78rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 32px;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* ---------- CHAPTER: QURAN ---------- */
+  .ch-quran {
+    text-align: center;
+  }
+
+  .ch-quran-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .quran-content-col,
+  .quran-verse-col {
+    align-items: center;
+  }
+
+  .quran-content-col .ch-desc,
+  .quran-content-col .ch-title {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .quran-verse-card {
+    max-width: 100%;
+    padding: 28px 20px;
+  }
+
+  .quran-verse-text {
+    font-size: 1.2rem;
+  }
+
+  .quran-phone-col {
+    min-height: 380px;
+    order: -1;
+  }
+
+  .quran-device-stack {
+    width: 180px;
+    height: 370px;
+  }
+
+  .quran-pedestal {
+    width: 220px;
+    height: 170px;
+  }
+
+  .quran-pedestal-ring {
+    width: 130px;
+    height: 26px;
+  }
+
+  .quran-glow-1 {
+    width: 400px;
+    height: 400px;
+  }
+
+  /* ---------- CHAPTER: FEATURES ---------- */
+  .ch-features-grid {
+    grid-template-columns: 1fr;
+    gap: var(--mobile-gap);
+  }
+
+  .feature-card {
+    padding: var(--mobile-card-padding);
+    border-radius: var(--mobile-radius-lg);
+  }
+
+  .feature-card-icon {
+    font-size: 1.3rem;
+  }
+
+  .feature-card-tag {
+    font-size: 0.72rem;
+    padding: 3px 12px;
+  }
+
+  .feature-card-title {
+    font-size: 1rem;
+    margin-bottom: 6px;
+  }
+
+  .feature-card-desc {
+    font-size: 0.82rem;
+    margin-bottom: 14px;
+    max-width: 100%;
+  }
+
+  .features-mockup-main .device-frame {
+    width: 150px;
+    height: 310px;
+    border-radius: 22px;
+  }
+
+  .features-mockup-settings .device-frame,
+  .features-mockup-splash .device-frame {
+    width: 120px;
+    height: 250px;
+    border-radius: 18px;
+  }
+
+  /* ---------- CHAPTER: PRAYER ---------- */
+  .ch-prayer {
+    text-align: center;
+  }
+
+  .ch-prayer-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .ch-prayer .prayer-visual {
+    order: -1;
+  }
+
+  .prayer-highlights {
+    font-size: 0.82rem;
+  }
+
+  .ch-prayer .ch-title {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .ch-prayer .ch-desc {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ---------- CHAPTER: AZKAR ---------- */
+  .ch-azkar {
+    text-align: center;
+  }
+
+  .ch-azkar-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .ch-azkar .azkar-visual {
+    order: -1;
+  }
+
+  .ch-azkar .ch-title {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .ch-azkar .ch-desc {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ---------- CHAPTER: TASBIH ---------- */
+  .ch-tasbih-layout {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .tasbih-highlights {
+    align-items: center;
+  }
+
+  .tasbih-highlights li {
+    text-align: right;
+  }
+
+  .tasbih-counter {
+    max-width: 400px;
+    margin: 8px auto 0;
+  }
+
+  /* ---------- CHAPTER: QIBLA ---------- */
+  .ch-qibla-layout {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .qibla-content {
+    order: -1;
+  }
+
+  .qibla-highlights {
+    align-items: center;
+  }
+
+  .qibla-highlights li {
+    text-align: right;
+  }
+
+  .qibla-device {
+    justify-content: center;
+  }
+
+  /* ---------- CHAPTER: HADITH ---------- */
+  .ch-hadith {
+    text-align: center;
+  }
+
+  .ch-hadith-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .hadith-features {
+    align-items: center;
+  }
+
+  .hadith-features li {
+    text-align: right;
+  }
+
+  .hadith-visual {
+    order: -1;
+  }
+
+  /* ---------- CHAPTER: RAMADAN ---------- */
+  .ch-ramadan {
+    text-align: center;
+  }
+
+  .ch-ramadan-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .ch-ramadan .ramadan-visual {
+    order: -1;
+  }
+
+  .ramadan-crescent {
+    width: 48px;
+    height: 48px;
+  }
+
+  .ch-ramadan .ch-title {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .ch-ramadan .ch-desc {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ---------- CHAPTER: STATS ---------- */
+  .ch-stats-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .stat-number {
+    font-size: 1.6rem;
+  }
+
+  .stat-label {
+    font-size: 0.78rem;
+  }
+
+  .stat-card {
+    padding: 24px 14px;
+    border-radius: var(--mobile-radius);
+  }
+
+  .stat-icon {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 14px;
+  }
+
+  .stat-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  /* ---------- CHAPTER: REVIEWS / Bento ---------- */
+  .ch-reviews {
+    padding: 100px 24px 140px;
+  }
+
+  .reviews-bento {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .review-card.card-portrait,
+  .review-card.card-tall {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .review-card.card-landscape,
+  .review-card.card-square,
+  .review-card.card-wide,
+  .review-card.card-compact {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .review-card.card-compact {
+    grid-row: span 1;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .review-card.card-compact .review-card-text {
+    display: -webkit-box;
+  }
+
+  .review-stats-card {
+    grid-column: span 2;
+    grid-row: span 1;
+    padding: 20px 16px;
+  }
+
+  .review-deco {
+    display: none;
+  }
+
+  .review-card-text {
+    font-size: 0.85rem;
+    line-height: 1.7;
+  }
+
+  .reviews-cta {
+    margin-top: 48px;
+  }
+
+  /* ---------- CHAPTER: FAQ / Premium (hidden on mobile — replaced by carousel) ---------- */
+  .ch-faq {
+    display: none;
+  }
+
+  /* ---------- SHOWCASE CAROUSEL (mobile only) ---------- */
+  .ch-carousel {
+    display: block;
+    padding: 100px 16px 80px;
+    text-align: center;
+  }
+
+  /* ---------- CHAPTER: CONTACT ---------- */
+  .ch-contact-layout {
+    text-align: center;
+    gap: 16px;
+  }
+
+  .contact-item {
+    padding: 20px;
+    border-radius: var(--mobile-radius);
+    gap: 14px;
+  }
+
+  .contact-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .contact-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .contact-item-title {
+    font-size: 0.88rem;
+  }
+
+  .contact-item-desc {
+    font-size: 0.82rem;
+    word-break: break-word;
+  }
+
+  .social-links {
+    gap: 10px;
+  }
+
+  .social-link {
+    width: 48px;
+    height: 48px;
+  }
+
+  .social-link svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* ---------- FOOTER ---------- */
+  .footer {
+    padding: 48px 0 24px;
+  }
+
+  .footer-layout {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 32px;
+  }
+
+  .footer-brand {
+    text-align: center;
+  }
+
+  .footer-name {
+    font-size: 1.5rem;
+  }
+
+  .footer-tagline {
+    font-size: 0.85rem;
+    margin-top: 4px;
+  }
+
+  .footer-links {
+    align-items: center;
+  }
+
+  .footer-copy {
+    text-align: center;
+  }
+
+  /* ---------- MODALS ---------- */
+  .modal-overlay {
+    padding: 16px;
+  }
+
+  .modal {
+    padding: 32px 24px;
+    border-radius: 20px;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .modal-title {
+    font-size: 1.2rem;
+  }
+
+  .modal-desc {
+    font-size: 0.85rem;
+  }
+
+  .modal-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* ---------- BUTTONS ---------- */
+  .btn {
+    height: var(--mobile-btn-height);
+    padding: 14px 24px;
+    font-size: 0.9rem;
+    border-radius: 9999px;
+    gap: 8px;
+  }
+
+  .btn-glass {
+    height: var(--mobile-btn-height);
+    padding: 14px 24px;
+    font-size: 0.9rem;
+  }
+
+  .btn-sm {
+    height: 44px;
+    padding: 10px 20px;
+    font-size: 0.85rem;
+  }
+
+  .btn-full {
+    width: 100%;
+  }
+
+  /* ---------- DECORATIVE ELEMENTS ---------- */
+  .hero-ring,
+  .ornament-pattern,
+  .glow-large,
+  .bg-ornament {
+    display: none;
+  }
+
+  /* ---------- TOUCH TARGETS ---------- */
+  .nav-mobile-btn,
+  .social-link,
+  .modal-close {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .btn,
+  .btn-glass {
+    min-height: 48px;
+  }
+}
+
+/* ============================================
+   576px — SMALL MOBILE
+   ============================================ */
+@media (max-width: 576px) {
+  :root {
+    --container-padding: 16px;
+    --mobile-card-padding: 20px;
+    --mobile-btn-height: 48px;
+  }
+
+  .section {
+    padding: 56px 0;
+  }
+
+  .section-header {
+    margin-bottom: 32px;
+  }
+
+  .ch-tag {
+    font-size: 0.68rem;
+    padding: 4px 12px;
+  }
+
+  .ch-title {
+    font-size: clamp(1.4rem, 5vw, 1.8rem);
+  }
+
+  .ch-desc {
+    font-size: 0.85rem;
+  }
+
+  .device-frame {
+    width: 200px;
+    height: 410px;
+  }
+
+  .hero-title-main {
+    font-size: clamp(2.4rem, 13vw, 3.5rem);
+  }
+
+  .hero-glow-xl {
+    width: 220px;
+    height: 220px;
+  }
+
+  .hero-glow-gold {
+    width: 160px;
+    height: 160px;
+  }
+
+  .hero-float-prayer {
+    width: 60px;
+    height: 60px;
+  }
+
+  .hero-float-stat {
+    width: 80px;
+    height: 48px;
+  }
+
+  .btn {
+    height: var(--mobile-btn-height);
+    padding: 12px 20px;
+    font-size: 0.88rem;
+  }
+
+  .btn-glass {
+    height: var(--mobile-btn-height);
+    padding: 12px 20px;
+    font-size: 0.88rem;
+  }
+
+  .feature-card {
+    padding: 20px;
+    border-radius: 18px;
+  }
+
+  .feature-card-title {
+    font-size: 0.95rem;
+  }
+
+  .feature-card-desc {
+    font-size: 0.78rem;
+  }
+
+  .tasbih-counter {
+    padding: 20px 16px;
+  }
+
+  .tasbih-total {
+    font-size: 2.4rem;
+  }
+
+  .tasbih-tap {
+    padding: 10px 24px;
+    min-width: 140px;
+    font-size: 1rem;
+  }
+
+  .tasbih-bead {
+    width: 12px;
+    height: 12px;
+  }
+
+  .qibla-compass {
+    width: 220px;
+    height: 220px;
+  }
+
+  .qibla-direction-value {
+    font-size: 1.8rem;
+  }
+
+  .qibla-meta {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .reviews-bento {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .review-card.card-portrait,
+  .review-card.card-tall,
+  .review-card.card-landscape,
+  .review-card.card-square,
+  .review-card.card-wide,
+  .review-card.card-compact {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  .review-stats-card {
+    grid-column: span 1;
+    padding: 16px 12px;
+  }
+
+  .review-stats-value {
+    font-size: 1.4rem;
+  }
+
+  .review-stats-stars svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .review-card-flag {
+    font-size: 1rem;
+  }
+
+  .ch-stats-layout {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .stat-number {
+    font-size: 1.4rem;
+  }
+
+  .stat-label {
+    font-size: 0.72rem;
+  }
+
+  .stat-card {
+    padding: 20px 12px;
+  }
+
+  .stat-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .stat-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .review-card {
+    padding: 20px;
+  }
+
+  .download-icon-large {
+    width: 52px;
+    height: 52px;
+  }
+
+  .footer-layout {
+    gap: 24px;
+  }
+
+  .modal {
+    padding: 28px 20px;
+  }
+
+  .ramadan-crescent {
+    width: 40px;
+    height: 40px;
+  }
+
+  .prayer-highlights {
+    font-size: 0.78rem;
+  }
+
+  /* ---------- CHAPTER: QURAN ---------- */
+  .quran-phone-col {
+    min-height: 320px;
+  }
+
+  .quran-device-stack {
+    width: 170px;
+    height: 350px;
+  }
+
+  .quran-pedestal {
+    width: 180px;
+    height: 140px;
+  }
+
+  .quran-verse-card {
+    padding: 24px 16px;
+  }
+
+  .quran-verse-text {
+    font-size: 1.1rem;
+  }
+
+  /* ---------- CAROUSEL ---------- */
+  .ch-carousel {
+    padding: 80px 12px 64px;
+  }
+
+  .carousel-stage {
+    height: 340px;
+  }
+
+  .carousel-slide.active {
+    width: 180px;
+    height: 340px;
+  }
+
+  .carousel-slide.prev,
+  .carousel-slide.next {
+    width: 110px;
+    height: 240px;
+  }
+
+  .carousel-slide.prev {
+    transform: translateX(-130px) rotateY(12deg) scale(0.85);
+  }
+
+  .carousel-slide.next {
+    transform: translateX(130px) rotateY(-12deg) scale(0.85);
+  }
+
+  .carousel-slide-inner {
+    border-radius: 24px;
+  }
+
+  .carousel-slide-inner::after {
+    border-radius: 24px;
+  }
+
+  .carousel-slide-title {
+    font-size: 0.75rem;
+  }
+
+  .carousel-slide-desc {
+    font-size: 0.65rem;
+  }
+
+  .carousel-btn {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* ============================================
+   360px — EXTRA SMALL
+   ============================================ */
+@media (max-width: 360px) {
+  :root {
+    --container-padding: 14px;
+  }
+
+  .device-frame {
+    width: 180px;
+    height: 370px;
+  }
+
+  .ch-title {
+    font-size: clamp(1.2rem, 4.5vw, 1.5rem);
+  }
+
+  .ch-desc {
+    font-size: 0.82rem;
+  }
+
+  /* ---------- CHAPTER: QURAN ---------- */
+  .quran-phone-col {
+    min-height: 280px;
+  }
+
+  .quran-device-stack {
+    width: 150px;
+    height: 310px;
+  }
+
+  .quran-pedestal {
+    width: 160px;
+    height: 120px;
+  }
+
+  .quran-pedestal-ring {
+    width: 100px;
+    height: 20px;
+  }
+
+  .quran-verse-card {
+    padding: 20px 14px;
+  }
+
+  .quran-verse-text {
+    font-size: 1rem;
+  }
+
+  /* ---------- CAROUSEL ---------- */
+  .carousel-stage {
+    height: 280px;
+  }
+
+  .carousel-slide.active {
+    width: 150px;
+    height: 280px;
+  }
+
+  .carousel-slide.prev,
+  .carousel-slide.next {
+    width: 90px;
+    height: 200px;
+  }
+
+  .carousel-slide.prev {
+    transform: translateX(-100px) rotateY(12deg) scale(0.85);
+  }
+
+  .carousel-slide.next {
+    transform: translateX(100px) rotateY(-12deg) scale(0.85);
+  }
+
+  .carousel-slide-inner {
+    border-radius: 20px;
+  }
+
+  .carousel-slide-inner::after {
+    border-radius: 20px;
+  }
+
+  .ch-carousel {
+    padding: 60px 10px 48px;
+  }
+
+  .carousel-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .hero-title-main {
+    font-size: clamp(2rem, 12vw, 2.8rem);
+  }
+
+  .hero-glow-xl {
+    width: 180px;
+    height: 180px;
+  }
+
+  .hero-glow-gold {
+    width: 130px;
+    height: 130px;
+  }
+
+  .btn {
+    padding: 12px 18px;
+    font-size: 0.85rem;
+  }
+
+  .btn-glass {
+    padding: 12px 18px;
+    font-size: 0.85rem;
+  }
+
+  .stat-number {
+    font-size: 1.3rem;
+  }
+
+  .feature-card {
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  .feature-card-title {
+    font-size: 0.9rem;
+  }
+
+  .feature-card-desc {
+    font-size: 0.75rem;
+  }
+
+  .modal {
+    padding: 24px 16px;
+  }
+
+  .modal-title {
+    font-size: 1.1rem;
+  }
+
+  .footer-layout {
+    gap: 20px;
+  }
+
+  .review-card {
+    padding: 16px;
+  }
+
+  .reviews-bento {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .review-card.card-portrait,
+  .review-card.card-tall,
+  .review-card.card-landscape,
+  .review-card.card-square,
+  .review-card.card-wide,
+  .review-card.card-compact {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+
+  .review-stats-card {
+    grid-column: 1 / -1;
+    padding: 16px 12px;
+  }
+
+  .review-card-text {
+    font-size: 0.82rem;
+  }
+
+  .stat-card {
+    padding: 16px 10px;
+  }
+
+  .ramadan-crescent {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* ============================================
+   LANDSCAPE PHONES
+   ============================================ */
+@media (max-height: 500px) and (orientation: landscape) {
+  .ch-hero {
+    min-height: auto;
+    padding: 80px 0 32px;
+  }
+
+  .hero-title-main {
+    font-size: 2.2rem;
+  }
+
+  .hero-actions {
+    margin-bottom: 24px;
+  }
+
+  .section {
+    padding: 48px 0;
+  }
+
+  .device-frame {
+    width: 180px;
+    height: 340px;
+  }
+}
+
+/* ============================================
+   HIGH DPI SCREENS
+   ============================================ */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .device-frame {
+    border-width: 1.5px;
+  }
+}
+
+/* ============================================
+   PRINT
+   ============================================ */
+@media print {
+  .nav,
+  .mobile-overlay,
+  .nav-mobile-btn,
+  .hero-glow-xl,
+  .hero-glow-gold,
+  .hero-float-prayer,
+  .hero-float-stat,
+  .hero-ring,
+  .quran-phone-col,
+  .ch-carousel,
+  .ramadan-crescent,
+  .download-icon-large,
+  .modal-overlay {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  .section {
+    padding: 32px 0;
+    page-break-inside: avoid;
+  }
+
+  .ch-hero {
+    min-height: auto;
+    padding: 20px 0;
+  }
+}
